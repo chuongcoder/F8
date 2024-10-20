@@ -1,0 +1,41 @@
+1. @media not|only mediatype and (media feature) and (media feature) {
+  CSS-Code;
+}
+You can also link to different stylesheets for different media and different widths of the browser window (viewport):
+
+<link rel="stylesheet" media="print" href="print.css">
+<link rel="stylesheet" media="screen" href="screen.css">
+<link rel="stylesheet" media="screen and (min-width: 480px)" href="example1.css">
+<link rel="stylesheet" media="screen and (min-width: 701px) and (max-width: 900px)" href="example2.css">
+
+Ex: @media screen and (min-width: 480px) {
+  #leftsidebar {width: 200px; float: left;}
+  #main {margin-left: 216px;}
+}
+
+2. @media not|only mediatype and (expression) {
+  CSS-Code;
+}
+=> media queries oriented (phuong huong)
+- expression :Landscape(ngang) or portrait(doc)
+
+3. Breakpoints 
+Ex: PC breakpoint 
+@media screen and (min-width: 992px) {
+    .pc {
+        display: block;
+    }
+} 
+
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+    .tablet {}
+}
+
+@media screen and (max-width: 767.98px) {
+    .mobile {}
+}
+
+
+4.Hàm min(), max() và clamp()
+- min/max/(val1, val2,...): dat gia tri toi da/ toi thieu
+- clamp(min, ideal, max): dat gia tri trong khoang

@@ -1,0 +1,112 @@
+
+2. LAM QUEN VOI HTML
+ * cau truc file html :
+
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title> vi du cau truc file html</title> 
+  </head>
+  <body>
+    CHAO MUNG F8
+  </body>
+</html>
+
+ * comment :  Ctr + /
+ * cac the html thong dung: 
+ + b/i = strong/em 
+ + h1 -> h6 :   <h1> the h </h1>
+ + p : <p> Paragraph </p>
+ + a : <a href = "link" > Anchor(mo neo) </a>
+ + img : <img src = "link" alt="chuthich" > Image </img>
+ + ul(unordered list),li(list item) :
+   <ul> 
+       (li*2 + enter)
+       <li>HTML CSS </li> 
+       <li>HTML CSS ! </li>
+   </ul> 
+ + table :    
+<table>
+    <thead>
+         table_head
+         <th>STT</th>
+         <th>Name</th>
+         <th>Age</th>
+    </thead>
+    <tbody>
+      <tr> table_row
+         table_data
+        <td>01</td> 
+        <td>chuong</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>saclo</td>
+        <td>18</td>
+      </tr>
+    </tbody>
+</table>
+ + input :(Nam) <input name ="Gender" type = "radio"> -> cung name chi chon 1 
+          (Nu)  <input name ="Gender" type = "radio"> 
+                <intput type = "text"> -> box dien tu
+                <input type ="checkbox"> -> tick , radio : dot
+ + button : <button> Login </button>
+ + div :<div> a block (khoi bao quanh content) </div> 
+ * Atribute : <h1 atribute="Day la thuoc tinh" > The H </h1>
+            
+
+*ememt : cu phap nhanh 
+li*3 => 3 tag li
+li>a*3 => 3 tag 1 in li
+ul>li*5{content} 
+
+*URL: Uniform Resource Locator: dai chi web dc tham chieu toi mot tai nguyen cu the tren mang
+=> Thuong bat dau bang mot giao thuc: https://
+*8.10: Tag a
+ lien ket sdt: <a href = "tel:0977692690 > 0977692690 </a>
+ lien ket mail : tel = mailto:____@gmail.com
+ co the them danh sach tham so sau vao mailto: cc(ds mail se nhan),bcc(ds mail an se nhan),subject(title mail:ko bat buoc),
+body(nd mail:ko bat buoc),?(dau phan cach giua mailto va tham so:ko bat buoc),&(phan cach giua cac tham so)
+Ex:
+<a href="mailto:example@gmail.com?cc=ccexampel@gmail.com&bcc=bccexample@gmail.com&subject=Request
+
+ href="#!": ko bi chuyen trang 
+ href="#div": chuyen den phan co id = div (tu scroll xuong phan div)
+ href=URL_img download : auto download img khi click
+ target="_blank" -> tab moi 
+
+*9.1: Tag img: 
+ src="URL_img"
+ width="100"
+ height="100"
+ alt="Content thay the neu img error"
+ source img gif(anh dong): https://giphy.com
+ Toi uu dung luong anh: https://tinypng.com
+ link anh: co the luoc bo tu dau ? tro di
+ <figure> -> sd cho document (anh minh hoa) 
+ Ex:
+ <figure>
+  <img></img> 
+  <figcaption> Chu thich anh</figcaption>
+ </figure>
+
+*10.0 Tra cuu html: https://htmlreference.io ,https://www.w3schools.com/tags/default.asp ,https://www.w3schools.com/tags/ref_attributes.asp
+
+*11: comment va blank space 
+ tag pre -> cho phep dinh dang co khoang trong 
+ Ex:
+ <pre>     khaong trong</pre>
+ Tra cuu html entities(ki tu dac biet): https://www.w3.org/wiki/Common_HTML_entities_used_for_typography
+ Ex: <p> &copy; 2018 - 2019 </p>
+*11.18:Non breaking space : &npsb; -> dau cach khi thu nhi trinh duyet dam bao 2 tu luon noi lien nhau
+*11.21: cong cu chuyen html -> html entities(ki tu dac biet): https://codebeautify.org/html-escape-unescape
+Ex:<meta charset="UTF-8">
+  ->  &lt;meta charset=&quot;UTF-8&quot;&gt; -> hien the meta tren trang web
+  -> muon viet code tren trang web -> vao prim.js -> dan link vao head, 2 link js vao body ...
+Ex: bo the code vao the pre(chap nhan space)-> class="language-html/.." of tag code  
+->noi dung trong tag code phai convert to entities -> https://codebeautify.org/html-escape-unescape
+
+12.1 Tính hợp lệ của HTML: check code html valid: https://validator.w3.org/nu/#textarea
+*Custom element: dong goi tinh nang (dc code o file js) ; <app-name> </app-name>

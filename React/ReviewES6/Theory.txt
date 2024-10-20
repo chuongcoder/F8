@@ -1,0 +1,98 @@
+1/ Arrow Funtion 
+
+Arrow function: const name = (para) => {code};
+Ex: const sum = (a,b) => a+b ; ko can {} : tu hieu return
+* return Object :
+const print = (a,b) =>({a:a,b:b}); bo Object vao ()
+* 1 para:
+const logger = log => console.log(log);  ko can ()
+* arrow function ko sd constructor
+console.log(course.getName());
+
+const Course = function(price,name) {
+    this.name=name;
+    this.price=price;
+}
+
+const NewCourse = new Course(3000,'Js');
+console.log(NewCourse);
+Declare function : funtion name(para) {code};
+Expresion function : const name = function(para) {code};
+
+2/ Enhanced object literals 
+a) define key : value for Object
+Ex: 
+var name = ' JS';
+var price = 3000;
+const course = {
+    name, // name:name
+    price,
+}
+console.log(course);
+b) define method for object
+Ex:
+var name = ' JS';
+var price = 3000;
+const course = {
+    name, 
+    price,
+    getName() {
+        return name;
+    }
+}
+c) define key for object 
+var fieldname = 'name';
+var fieldprice = 'price';
+
+const course = {
+    // lay value cua bien fieldname lam key 
+    [fieldname] : 'js',
+    [fieldprice] :1000
+}
+
+* Detructuring, Rest(Paramater...of function) :
+var array = ['Js','PHP','C'];
+var [a,b,c] = array;
+console.log(a,b,c);
+
+var [a,b,...rest];
+console.log(rest); ...Name: toan tu rest(conlai)
+
+var Object = {
+    name:'Js',
+    price:1000,
+    children:{
+        name:'Java',
+    }
+}
+
+// dat ten de tranh bi trung khi goi key 
+var {name:parentname,children:{name:childname}} = Object;
+console.log(parentname);
+console.log(childname);
+
+// dinh nghia key-value 
+var {name,description='default des'} = Object;
+console.log(description);
+
+
+function logger(...params){
+    console.log(params);
+}
+console.log(logger(1,2,3));
+
+=> [1,2,3]
+
+
+var array = [1,2,3];
+function lgger(...rest) -> rest(para)
+ {
+    for (var i=0;i<rest.length;i++) {
+        console.log(rest[i]);
+    }
+}
+logger(...array) -> spread 
+* Function(...array) -> spread 
+
+
+*Module in js 

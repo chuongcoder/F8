@@ -1,0 +1,23 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+/* row  */
+/* .card-item {
+    width: 33.33%;
+    width: 100%;
+    background: greenyellow;
+    border: 1px solid black;
+} */
+
+/* col  */
+.cart-item {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px 12px;
+}

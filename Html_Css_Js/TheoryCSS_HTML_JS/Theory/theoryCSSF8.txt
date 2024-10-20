@@ -1,0 +1,3555 @@
+*13.1 : lam quen css
+13.15 Thẻ link #1: favicon
+-> https://www.favicon-generator.org/ : chon tep anh goc favicon(16x16: mac dinh tren trang) 
+-> code link anh favicon cho tat ca thiet bi -> link vao index.html
+- co the code tren stackblitz
+* su dung css : inline(uu tien nhat) con lai cai nao viet sau -> lay cai do
+- Internal:(in head of html) 
+  <style>
+      h1 {
+        color: red ;
+        font-size : 20px;
+      }
+  </style>
+- External: lien ket file css vs html (code css at file css)
+  <link rel="stylesheet" href="main.css">
+- Inline : code css truc tiep tren the 
+  <h1 style="color : blue ; font-size:100px" >CSS</h1>
+
+13.21 Thuoc tinh CSS thong dung 
+1.color
+2.font-size
+3.background-color
+4.background-image(anh nen)
+5.width/height
+6.box model (margin/padding/border)
+7.box radius
+8.user-select:none(ko cho boi den chu)
+
+15.Tag inline/block:
+-inline: chiem theo noi dung no chua => ko hd voi mot so thuoc tinh css: padding/margin/width/height
+-block: chiem het khoi cha chua no
+-display:intline-block => giu cho tag vua co tinh inline va block ( nhiu tag tren 1 dong)
+Ex: 2nut se luon co k/c ( do tag xuong dong -> ' ')
+
+15.10: Opacity: 0.0 - 1.0 || 0% - 100% => do mo
+15.13: Visibility:hidden/visible -> an luon (ko tuong tac dc)/ opacity=0 -> van tuong tac dc
+* none|0|hidden     diplay|opacity|Visibility:
+an di                 Y       Y        Y
+chiem ko gian         N       Y        Y
+co the tuong tac      N       Y        N
+an phan tu con        Y       Y        Y
+tinh thua ke          N       N        Y
+hien thi phan tu con  N       N        Y
+ho tro animation      N       Y        Y
+Ex: 
+* ID(unique) vs Class(chung) :
+  <h1 id="ID">css selector1</h1> -> css tach biet 
+  <h1 class="CLASS">css selector2</h1> -> css chung
+  <h1 class="CLASS">css selector3</h1>
+
+*16. Selectors (bo chon) 
+Simple selectors (select elements based on name, id, class)
+Combinator selectors (select elements based on a specific relationship between them)
+Pseudo-class selectors (select elements based on a certain state)
+Pseudo-elements selectors (select and style a part of an element)
+Attribute selectors (select elements based on an attribute or attribute value)
+
+- *{} : css cho tat ca tag body 
+- .class {}: chon tat ca phan tu co class 
+- .clas1.clas2 {} || #id1.class2 {}: chon tat ca tag co class1 va class2
+- element.class {}: p.intro=>chon tat ca tag p co class intro
+- element1, element2 {}: css cho tat ca 2 element . Ex: #id1, .class2 ,h,p {}
+- element>element1{} : chon tat ca element1 la con truc tiep element
+- .class1 .class2 {} : css cho tag co class2 con tag co class1 
+- element1 element2 {}: chon tat ca tag co element 1 con element 2
+- element1 + element2 {} : css cho element2(lien ke) nam sau element1
+Ex:  <element1> </element1>
+     <element2> </element2>
+- element1 ~ element2 {} : chon tat ca element2 nam sau element1
+.box .title {css}    => css title(class2)
+ <div class ="box">
+     <div>
+      <div>
+        <h1 class="title">css</h1> -> css
+        <h2 class="title">html</h2> -> css
+        <h3 class="title2">javascript</h3>  -> ko bi tac dong css
+      </div>
+     </div>
+   </div>
+- .* {}: css tat ca cac the 
+- h2,h3 {} : css all h2,h3 tag
+- nametag.class {} :css cho the nametag co class (tag cung class)
+ EX: 
+  //html
+   <h2 class="title">tag h2</h2>
+   <h3 class="title">tag h3</h3>
+   <h4 class="title">tag h4</h4>
+  //css
+ h3.title {
+ color: green -> tag h3: green
+}
+- .class1, .class2, .classn,.. {}: css chung  or .class(css cho tag co diem chug class)
+-.class tag {} :   css all tag con cua class 
+EX :
+ // html
+<div class="div">
+    <div>
+      <h1>
+       tag h1  -> css
+      </h1>
+      <h1>
+       tag h1 -> css
+      </h1>
+      <h2>
+        tag h2 -> ko css
+       </h2>
+    </div>
+  </div>
+  // css : .div h1{css}
+- .class1 > .class2{} : css cho the co class 2 con truc tiep class 1 
+Ex:  
+ <div class="box">
+    <h2 class="title"> -> css (cap con)
+       <h1 class="title1"> -> ko css (cap chau)
+       </h1>
+    </h2>
+  </div>
+- .class + .class{} : css cho tag co class sau class 
+Ex:
+  <h1 class="title">tag h1</h1> -> ko css
+  <h2 class="title"> tag h2</h2> -> css
+  <h2 class="title"> tag h2</h2> -> css
+  Ex1: 
+    <h1 class="title">tag h1</h1> -> ko css
+    <h3>  </h3>
+   <h2 class="title"> tag h2</h2> -> ko css
+  <h2 class="title"> tag h2</h2> -> css
+ Ex:
+  /* Lựa chọn 1 thẻ p đứng liền kề sau class-9 */
+ .class-9 + p {
+    color: goldenrod; // css 1 the p sau the co calss-9
+}
+  - .class ~ .class{} :
+   <h1 class="title">tag h1</h1> -> ko css
+    <h3>  </h3>
+   <h2 class="title"> tag h2</h2> ->css
+  <h2 class="title"> tag h2</h2> -> css
+Ex:  /* Lựa chọn toàn bộ thẻ p đứng sau class-10 */
+.class-10 ~ p {
+    color: limegreen;
+}
+
+16.24: Pseudo classes selectors : 
+   selector:pseudo selector {
+
+   }
+-Pseudo classes: hover,active,link,visited,empty,target
++ class/element/id : hover {} -> hover phan tu co id hay class 
+Ex: h1:hover{
+  color:red;
+}
++ active -> click 
+Ex: .btn:click {
+  color:red
+}
++ link -> css cho element neu ng dung da truy cap link do
+Ex: 
+ <h1>
+    <a href="gg.com">google</a>
+  </h1>
+  a:link{
+    color: red 
+  }
++ visited -> css element neu ng dung chua truy cap len link do
++ empty ->css cho element ko co noi dung ben trong the 
++ target -> css cho the duoc target (hash -> href = '#id' ->troi dung the can css)
+Ex:
+  <ul>
+    <li><a href="#heading-2">heading</a></li>
+  </ul>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo velit quod ipsum, quaerat eveniet cumque cupiditate
+    quibusdam autem similique pariatur!
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo velit quod ipsum, quaerat eveniet cumque cupiditate
+    quibusdam autem similique pariatur!
+  </p>
+  <h2 id="heading-2">Heading 1</h2>
+-> tag h2: chinh la target : khi an vao link -> trinh duyet auto scroll toi tag h2(target)
+ => target se dc css 
++ element:first-child -> chon the con dau tien cua element
+Ex:
+<div>
+    <p>para 1</p> -> css
+    <p>para 2</p>
+    <p>para 3</p>
+</div>
+
++ element:last-child -> chon the con cuoi cua element
+Ex:
+   <div>
+    <p>para 1</p>
+    <p>para 2</p>
+    <p>para 3</p>
+    <div>
+      <p>para 1</p> 
+      <p>para 2</p>
+      <p>para 3</p> -> css
+    </div>
+  </div>
+css
+p:last-child {
+  color: red
+}
+
+Ex2:
+ <ul>
+  <li><a href="">link1</a></li> -> css
+  <li><a href="">link2</a></li>
+  <li><a href="">link3</a></li>
+  <li><a href="">link4</a></li>
+  <li><a href="">link5</a></li>
+ </ul>
+css: the a con the li(dautien) con ul 
+ ul li:first-child a {
+  color: red;
+}
++ ntn-child(n): css con thu n 
+Ex:
+    <div class="box">
+      <p>Text 1</p>
+      <p>Text 2</p>
+      <p>Text 3</p>
+      <p>Text 4</p>
+      <p>Text 5</p> -> css
+      <p>Text 6</p>
+      <p>Text 7</p>
+      <p>Text 8</p>
+      <p>Text 9</p>
+      <p>Text 10</p>
+    </div>
+css  .box p:nth-child(5) {
+      color:red;
+      font-size: 20px;
+    }
+     .box p:nth-child(even/odd) {
+      color:red;
+      font-size: 20px;
+    }
+css tag p1,p4,p7,..    
+      .box p:nth-child(3n+1) {
+      color:red;
+      font-size: 20px;
+    }
+
++ nth-last-child(n):reverse nth-child 
++ only-child: neu co 1 phan tu con duy nhat no se tac dong len
+Ex: 
+ <div class="box">
+      <p>Text 1</p> -> css
+    </div>
+.box p:only-child {
+      color:red;
+      font-size: 20px;
+    }
+  
+16.34:type selector:
++ first-of-type -> css element xh lan dau (ko tinh element n != element)
+Ex: tag p && xh lan dau
+   <div class="box">
+      <h1>Heading</h1>
+      <p> class="text"Text 1</p> -> css
+      <p> class="text"Text 1</p>
+      <p> class="text"Text 1</p>
+    </div>
+css  p:first-of-type{
+      color:red;
+      font-size: 20px;
+    }
+Ex: tag && xh lan dau
+   <div class="box">
+      <h1 class="text">Heading</h1> -> css
+      <h1 class="text">Heading</h1> 
+      <h1 class="text">Heading</h2> -> css
+      <h1 class="text">Heading</h2> 
+      <p> class="text"Text 1</p> -> css
+      <p> class="text"Text 1</p>
+      <p> class="text"Text 1</p>
+    </div>    
+css  .text:first-of-type{
+      color:red;
+      font-size: 20px;
+    }
+
+Ex: tag co class la text(0) && xh lan dau (1) == 0 -> ko css
+   <div class="box">
+      <p> Text 1</p> -> css
+      <p> class="text"Text 1</p>
+      <p> class="text"Text 1</p>
+    </div>    
+css  .text:first-of-type{
+      color:red;
+      font-size: 20px;
+    }
+
++ last-of-type : reverse first (lay tat ca cac tag (nhiu loai moi loai lay 1 cai cuoi cung) )
++ nth-of-type : giong nth-child nhung khi dan xen cac tag khac vao -> ko anh huong 
+(bi lech thu tu neu co tag khac)
++ nth-last-of-type : reverse nth-of-type
++ only-of-type: uu tien element only(khac only-child la co tag khac -> ko an css)
+Ex: tat ca element co class xh duy nhat -> css
+  <div>
+    <h2 class="text">Hi</h2> -> css
+    <h1 class="text">Text</h1>  -> css
+    <p class="text">Text</p> -> css
+  </div>
+css   .text:only-of-type{
+      color:red;
+      font-size: 20px;
+    }
+Ex:chi co tag p dc css
+css  p:only-of-type{
+      color:red;
+      font-size: 20px;
+    } 
+
+16.38: Not selector
+Ex: background cho tag khac p 
+  <div>
+    <h2 class="hightlight">H2</h2> -> css
+    <h1 class="hightlight">H1</h1> -> css
+    <p class="hightlight">Para</p>
+  </div>
+css .hightlight:not(p/class/id) {
+  background-color: red;
+}
+Ex2: color tat ca tag li tru tag li dau tien
+ <ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+  <li>Item 6</li>
+  <li>Item 7</li>
+  <li>Item 8</li>
+  <li>Item 9</li>
+  <li>Item 10</li>
+ </ul>
+  css 
+   ul li:not(:first-child) {
+    color: red;
+   }
+
+*Review CSS Selector:
+Ex: 
+
+  <div>
+  <h1>Heading 1</h1> -> css
+  <h2>Heading 2</h2> -> css  
+  
+    <p>Text 1</p>
+    <p>Text 2</p>
+    <p>Text 3</p> 
+
+    <div>
+      <p>
+        Text 4 -> css
+      </p>
+    </div>
+
+    <ul>
+      <li>Item 1</li>  -> css
+      <li>Item 2</li> -> css
+      <li>Item 3</li> -> css
+    </ul>
+  </div>
+css: chi co con the div css
+div * {}
+css: tru the p 
+div *:not(p) {}
+*16.43 Do uu tien trong CSS : 
+Selector	                Specificity    Value	Calculation
+p                          	1	            1
+p.test	                   11             1 + 10
+p#demo	                  101	            1 + 100
+<p style="color: pink;">	1000	          1000
+#demo	                    100             100
+.test	                    10	             10
+p.test1.test2	           21	             1 + 10 + 10
+#navbar p#demo	         201             	100 + 1 + 100
+
+17.1 Box model:
+- Luon la hcn
+- Luon co 5 thuoc tinh: width,height,margin,border,padding 
+- Kich thuoc that : padding + border + content 
+17.4 Padding:
+padding: Up right down left 
+padding: up_down left_right
+padding: up left_right down 
+
+17.8 Border:
+- Neu bo goc(hinh tron) -> box model van la hcn 
+- border: size(px/..) type_border color_border 
+- border-style/color/width: 
+- border-top-style: solid 
+- border-top: 20px solid #ddd
+17.19 Border radius
+border-radius: t r d l
+border-top-left-radius:
+17.24 Outline: phu ngoai ->ko anh huong size box model 
+- ko ho tro nhiu huong khac nhau -> chi 1 gia tri cho 4 huong 
+- outline-offset: 3px -> cach border 3 px 
+
+17.28 Margin 
+- margin-left: auto( can chinh theo the cha ) 
+- margin: auto (can giua theo width)
+- margin: -20px (cat ngan di 20px ca 4 huong)
+
+17.35: margin collapse 
+- The cha,con margin cung chieu 
+- 2 the margin nguoc chieu 
+=> margin ko co o 1 trong 2 thuoc tinh 
+=> solve:
+- float: left (ap dung cho 2 the can margin ngc chieu || them vao the cha)
+- position: absolute(the duoi || the con)
+- display: inline-block (the cha or con )
+Ex: neu co the cha con
+theCha{
+  display: flex;
+  flex-direction: column
+}
+
+17.39: Box-sizing:
+- box-sizing: content-box(default) => size bi don them phan border vs padding
+Ex: border 10px, padding 10px , content 170 px -> size:200px
+- box-sizing: border-box (size box dc giu nguyen nen phan content -> khop size mac dinh )
+Ex: border 10px, padding 10px, content 170 px -> size:170PX (nen phan conten lai)
+
+18: don vi trong css (CSS Units):
+- padding top: 30% (width=30% tag chua no)
+- height body default = 0
+- Absolute units : px,pt,cm,mm,inch,pc
+- Relative units(value phu thuoc-> tuong doi): %,rem,em,vw,vh
++ % -> thay doi theo tag chua no : 50% -> box = 50% div chua box
++ rem : -> phu thuoc size chu dc dinh nghia the html (neu ko co font-size -> default 1rem = 16px(co chu mac dinh))
+100 % - 16px -  1rem 
+62,5% - 10px -  1rem
+Ex:
+ html  {
+      font-size: 20px;
+    }
+      h1 {
+        color: red ;
+        font-size : 1rem; // 20px -> phu thuoc atributes in html
+      }
+Ex:16px - 1rem -> 10px - 10/16 rem 
+html{
+  font-size: 100% (16px) 
+}
+
+.content{
+  font-size: 28px;  1.75 rem 
+}
+Ex: 10px (16*62,5%) - 1rem
+html{
+  font-size: 62.5%
+}
+
+.content{
+  font-size: 28px (2.8rem)
+}
+
++ em : phu thuoc tag gan nhat chua no (font-size co tinh thua ke)
+Ex:
+.box {
+  font-size: 20px;
+  width: 10em; -> 200px
+}
+Ex: 
+.parent {
+   font-size: 20px;
+}
+
+.box {
+  font-size: 2em  /* 40px */
+  width: 10em  /* 400px  */
+}
+
+Ex: cac the long nhau
+
+.parent{
+  font-size: 20px;
+}
+
+/* 3 the long nhau */
+.box {
+  font-size: 2em; /*40px*/
+  width: 2em; /*80px*/
+
+   .box{
+    font-size:2em; /*80px*/
+    width:2em;/*160px*/
+
+     .box{
+      font-size:2em; /*160px*/
+      width:2em;/*320px*/
+     }
+   }
+}
++vw(viewport - width) : phu thuoc chieu ngang trinh duyet 
+Ex: width: 50vw (50% width trinh duyet)
++vh(viewport - height) : phu thuoc chieu doc trinh duyet 
+
+
+19. Color 
+- rgb(255,255,255) || rgb(r g b) : white (0-> 255)
+- rgba(r,g,b,a) || rgba(r g b / a): a(anlpha) co the nhin xuyen qua (0->1:opacity)
+- Hex: #abcdefgh: r-ab ; g-cd ; b-ef ; gh-opacity
+- currentcolor: thua ke mau cua the trc do
+Ex: rgba(255,0,0,0.5) : 50% mau do 
+-> hexa :#ff000080 : tai sao 80 ?
+*solve: 255*50% = 127.5 = 128 mod 16 = 0 mod 16 = 8 => 80
+.box {
+  color: red;
+  border: 2px solid currentcolor;
+  background-color: currentcolor;
+}
+
+* bg image 
+-background-image: url(" "), url(" ")
+-background-repeat: repeat; 
+=> tao background lap lai cac anh nho -> anh lon (save data)
+
+**optional: ko bat buoc, direction : phuong huong mau 
+-background-image: linear-gradient(direction(optional),color1, stop1, color2,stop2,..)
+Ex:
+background-image: linear-gradient(red 20%, green 70%)
+- 0% -> 20% : red;
+- 20% - > 70% : chuyen mau(mix color)
+- 70% -> 100% : green;
+Ex:
+background-image: linear-gradient(0deg,red,green) bottom->up
+background-image: linear-gradient(to right,red,green) left->right
+
+*bg size: cover/contain/one_two_value 
+cu phap nhanh : bgs:cover_tab 
+background-size:cover (cover full size element -> bi mat di mot phan buc anh neu size anh != size elment chua anh)
+background-size:contain (lay toan bo anh-> ko mat di mot phan buc anh neu size anh != size elment chua anh)
+background-size:100% (dung ti le img) | 100px -> width = 100 px (height auto theo ti le img)
+background-size:100% 100% (full element -> co the ko dung ti le img)
+
+*bg position:key word/x% y%/ xpos ypos
+Ex: key word 
+background-position: top center/ top right / center 
+Ex: x% y%
+background-position: 0% 0% (top left) [x: 0->100 theo width | y : height ]
+Ex: xpos ypos
+background-position: 50px 50px (day img xuong 50px va phai 50px)
+
+20.20 Background-attachment.
+ background-attachment: scroll(default)
+ background-attachment: fixed (img ko scroll -> dung im)
+ background-attachment: local (img se cuon theo noi dung ben trong the cha)
+ -> neu content qua nhiu so voi the cha chua no -> tran ra ngoai
+ -> fixed: overflow: auto (xh thanh cuon ben trong the cha)
+
+ 20.22 Background-clip: quy dinh mau nen se do o dau => td bg img vs bg color 
+ background-clip:border-box(mau nen se do tu border vao)
+ background-clip:padding-box(mau se do tu padding -> tro vao)
+ background-clip:conten-box(chi do mau phan content)
+ background-clip:text(chi do mau phan text)
+
+ 20.25 Cách làm chữ chuyển màu.
+ Kiem tra neu trinh duyet co ho tro tinh nang chuyen mau chu -> css 
+ @supports (background-clip:text) or (-webkit-background-clip: text) {
+  .hightlight{
+    color: transparent /*mau mac dinh trong suot 
+
+    /* cop tren css gradient web */
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+ }
+20.27 Background-origin: diem bat dau cua img (goc trai tren) => chi co td vs bg img
+background-origin:padding-box(default)
+background-origin:border-box 
+background-origin:conten-box  
+
+20.32 Background shorthands:cu phap ngan bg
+background: bg-color bg-img bg-position/bg-size bg-repeat bg-origin bg-clip bg attachment initial | inherit
+
+20.36 Backdrop-filter
+Ex:
+.blur{
+  height: 100px;
+  background: rgba(0,0,0,0.6); anlpha 0.6 -> nhin xuyên 
+  backdrop-filter: blur(32px); độ nhòe 
+  -webkit-backdrop-filter: blur(32px);
+  margin-top: 100px;
+}
+truong hop trinh duyet ko ho tro :
+@supports (backdrop-filter: blur(32px)) or 
+(-webkit-backdrop-filter: blur(32px)) {
+  .blur{
+    background: rgba(0,0,0,0.6); anlpha 0.6 -> nhin xuyên 
+  backdrop-filter: blur(32px); độ nhòe 
+  -webkit-backdrop-filter: blur(32px);
+  }
+}
+/* Keyword value */
+backdrop-filter: none;
+
+/* URL to SVG filter */
+backdrop-filter: url(commonfilters.svg#filter);
+
+co the ghi nhiu hon 1 thuoc tinh tren 1 dong 
+Ex: backdrop-filter: blur(2px) brightness(60%)
+/* <filter-function> values */
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+
+/* Multiple filters */
+backdrop-filter: url(filters.svg#filter) blur(4px) saturate(150%);
+
+/* Global values */
+backdrop-filter: inherit;
+backdrop-filter: initial;
+backdrop-filter: revert;
+backdrop-filter: revert-layer;
+backdrop-filter: unset;
+* Function CSS 
+var(), linear-gradient(), rgba(), rgb(), calc(), attr().
++ rgb(0->255,0->255,0->255) 
++ calc (120px*+-/2) 
++ attr (atributes) 
+  <style>
+    // lop gia
+    .box::after {
+    content:attr(data-title); 
+}   .box {
+   height : 100px;
+   width : 100px;
+   background-color: aqua;
+}
+  </style>
+</head>
+<body>
+ <div class="box" data-title="day la box"> css </div>
+</body>
+
+21.9 Nhúng Google Fonts
+
+21.15 Fonts chữ hệ thống -> tang toc do truy cap(system font)
+https://css-tricks.com/snippets/css/system-font-stack/
+ line-height: 1.4 (gap 1.4 lan font-szie)
+ font-style: italic/..
+ font-variant: small-caps (viet hoa chu nho)
+ font-weight: bold/.. (do day cua chu)
+ font(sorthand):font-style font-size/line-height font-family
+ -> toi thieu 2 thuoc tinh viet ngan
+ text-align: center (can theo do rong cua the(display:block -> tag inline)) / img -> display:inline /inline-block
+ text-decoration:underline/dotted red 5px / line through
+ text-indent: 5px (thut le)
+ text-transform: uppercase/lowercase
+ letter-spacing: 2px (kc giau cac tu)
+ 1.Nhieu khoang trang 1 khoang trang 
+ 2.Nhieu dau xuong hang: 1 khoang trang 
+ 3.Noi dung cham gioi han box: auto xuong hang
+ white-space:normal(1 2 3) / nowrap(1 2) /pre(0) / pre-line(1 3) 
+ / pre-wrap(3)
+
+ word-break: break all(auto xuong dong neu cham gioi han)
+ word-spacing: kc cac tu
+ text-shadow: x y R color = 10px -10px 3px rgba(0,0,0,0.3)
+ text-overflow: clip(cut) / ellipsis(...) ket hop ovweflow:hidden , white-spacing:nowrap /  (cu li doan text bi vuot qua size box)
+
+21.30 Hiển thị dấu 3 chấm khi nội dung dài.
+h1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; (dau 3 cham hien thi dong 1)
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+21.32 Tối ưu việc sử dụng fonts: optimize text rendering
+*text-rendering: toi uu viec hien thi van ban tren trang web
+- text-rendering: optimizeSpeed (Trang nhieu video->hien thi van ban cang nhanh cang tot )
+- text-rendering: optimizeLegibility (Trang bao: nhieu chu->hien thi chinh xac) 
+*-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing:grayscale  (khử răng cưa chữ -> smooth )
+
+21.33 Sử dụng Font Awesome. su dung icon <i> (nhung link cdn)
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+22.1 Đặt kích thước tối đa cho hình ảnh: max-width:100% ( anh nho van nho, anh lon hon thi bi thu nho lai trong the cha)
+22.2 Căn giữa hình ảnh: img (ko phai block) 
+ img{ 
+  display: block;
+  margin: 0 auto;
+}
+
+22.3 Lazy load cho hình ảnh
+<img loading="lazy" />
+khi cuon gan toi phan co img -> img moi dc tai
+-> moi vao trang ko tai img -> trang ko giat lag 
+
+22.5 Giữ đúng tỉ lệ hình ảnh
+*img{ width: 100% (height auto)}
+*class-img{ 
+  width:100%;
+  height: 300px;
+  border-radius: 50%
+  object-fit: cover/contain; (bg-size) img auto tran vien (chap nhan mat mot phan buc anh nhung dam bao ti le)
+  /* object-position: top center / ... */ vi tri img 
+}
+
+22.6 Bọc văn bản xung quanh ảnh:
+content img{
+  float: left /*img ben trai va noi dung cung can chinh ben trai theo buc anh */ 
+  padding: 10px 20px;
+}
+content p{
+  font-size: 14px;
+  line-height: 1.5;
+}
+content {
+  text-align: center;
+}
+
+22.7 Dùng background-img(ko lien quan) hay img(lien quan content)
+22.9 Hỗ trợ in backgrounds
+khi o che di in (Ctrl P) -> moi ap dung code css:
+@media print {
+body {
+print-color-adjust: exact !important;
+-webkit-print-color-adjust: exact !important; 
+}
+.bg-color {
+  background-color: green; /*  khi in -> convert to green */
+}
+}
+
+23.1 Position relative.
+- position: static (default)
+- position: relative (dc dinh vi theo chinh vi tri ban dau cua no )
+- position: absolute  + ko co the cha dinh vi : dinh vi theo body 
+                      + co the cha: dinh vi theo the cha gan nhat(position:relative)
+
+23.13 Position fixed
+-> an theo viewport : khi xh thanh cuon no van o nguyen vi tri 
+-> an theo body : absolute => bi troi theo thanh cuon
+Ex: 
+.box {
+  background: orange;
+  font-size: 32px;
+  padding: 10px 20px;
+  inset: 10px ( top = left = right = bottom = 10px)
+}    
+
+Ex: lam thanh menu fixed 
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* width: 100%; */
+}
+
+.content {
+  margin-top: 50px (height menu)
+}
+
+23.20 Position sticky:
+-> thanh cuon cham toi element co thuoc tinh sticky -> dinh vao trinh duyet 
+Ex:
+
+<body>
+  <ul class="chapter">
+    <li>
+      <h2> Chuong 1 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 2 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 3 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 4 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 5 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 6 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 7 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 8 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 9 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>s
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+    <li>
+      <h2> Chuong 10 </h2>
+      <ul>
+        <li>Bai hoc so 1</li>
+        <li>Bai hoc so 2</li>
+        <li>Bai hoc so 3</li>
+        <li>Bai hoc so 4</li>
+        <li>Bai hoc so 5</li>
+        <li>Bai hoc so 6</li>
+        <li>Bai hoc so 7</li>
+        <li>Bai hoc so 8</li>
+        <li>Bai hoc so 9</li>
+        <li>Bai hoc so 10</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+
+/* h2 {
+    background-color: orange;
+    position: sticky;
+    top: 0;
+}
+
+.chapter {
+    background: #ccc;
+    height: 500px; */
+    /* khi content trong the con vuot qua the cha(chapter) -> auto   */
+    /* overflow: auto;
+    margin: 300px;
+} */
+
+
+*Sudo Element
+24.1 first-line, first-letter
+p::first-line{
+  color:red; -> dong dau mau do
+}
+
+p::first-letter {
+  font-size: 50px;
+  color: red; -> ki tu dau tien 
+  font-weight: 500;
+}
+
+24.6 selection, marker 
+p::selection {
+  color:orange; boi den -> mau cam 
+}
+
+li::marker{
+  color:red; nut den danh dau tung the li -> do
+}
+
+24.7 before, after: chen noi dung vao trong phan tu 
+<div class="box">
+  <p>Lorem ipsum dolor sit amet.</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+</div>
+
+.box::before {
+  content:"Day la noi dung phia truoc"; co the la chuoi rong
+  display:inline-block;
+  width:100px;
+  height:100px;
+  background: red;
+  border-radius:50%;
+}
+
+25.1 Thuộc tính overflow
+-overflow:hidden(an di phan bi thua cua the con trong the cha)
+-overflow:scroll(luon xh thanh cuon de cuon toi phan noi dung bi vuot qua size the cha)
+-overflow:auto(xh thanh cuon neu nd vuot qua) 
+-> size the p > size div cha -> xh thanh cuon (overflow-Y)
+
+25.5 Overscroll-behavior
+-loai bo hieu ung cuon cao su: none (hien thi tai lai neu cuon vuot qua trang)
+-loai bo hieu ung cuon long nhau : contain (cuon het div con -> div cha ko cuon:ma fai tro ra ngoai div con -> div cha bat dau cuon ) 
+-default: auto 
+
+25.8 Tùy biến scrollbar(custom scrollbar)
+
+/* width*/
+::-webkit-scrollbar {
+  width:10px;
+}
+
+/* Track* / : duong cuon
+::-webkit-scrollbar-track{
+  background: #f1f1f1;
+}
+
+/*Handle*/
+::-webkit-scrollbar-thumb{
+  background: orange;
+}
+
+/*Handle on hover*/ 
+::-webkit-scrollbar-thumb:hover{
+  //
+}
+
+Ex: .box::-webkit-scrollbar-thumb{} -> chi ap dung cho div box (neu co thanh cuon)
+
+26.1 Box-shadow: x,y(bat buoc)
+-box-shadow: x y blur(do mo) range color 
+Ex: box-shadow: 10px 10px 10px rgba(0,0,0,0.4)
+-box-shadow: inset(do ben trong) x y color 
+-box-shadow: x1 y1,x2 y2,.. (nhiu bong do gop len nhau)
+* bien trong css : 
+// global : help change color for all tag use root
+: root {
+  --text-color: red; bien luu color
+}
+h1 {
+  color : var(--text-color);
+} 
+// local
+h2 {
+  --my-color: green;
+  color : var(--my-color);
+}
+
+26.6 Pointer-events : none-> vo hieu hoa tro chuot (ko tuong tac vs element)
+
+26.10 Sử dụng CSEx:S counters
+/* tang bien heading & reset sub-heading = 0 neu gap h2 tag  */
+
+h2 {
+    counter-increment: heading;
+    counter-reset: sub-heading;
+}
+
+h2::before {
+    content: counter(heading) " - "
+}
+
+h3 {
+    counter-increment: sub-heading;
+}
+
+h3::before {
+    content: counter(heading) "." counter(sub-heading) " - "
+}
+
+
+26.11 Thuộc tính clip-path (cut element -> create shape)
+clip-path: circle(R at x y) 
+Ex: .box {
+  w200
+  h200
+  margin: 50px auto 0;
+  background: url() center/cover;
+  clip-path: circle(25% at 0 50%);
+}
+
+clip-path: inset(U R D L round U1 R1 D1 L1 ) -> U1,L1,R1,D1 : bo goc (radius) | U L D R : size (create hinh vuong)
+Ex:clip-path: inset(50px round 10px 20px)
+
+clip-path: polygon(x y,x1 y1, x2 y2) -> nhap toa do x,y,.. -> tao hinh tuong ung
+-------------------------> x
+   | 0 (0%)              (100%)
+   |
+   |
+   |
+   | y  (100%)
+
+Ex: Triangle 
+.box {
+  w200
+  h200
+  margin: 50px auto 0;
+  background: url() center/cover;
+  clip-path:polygon(0 0, 100% 0, 100% 100%); toa do theo thu tu de noi cac diem -> tao hinh 
+}
+
+26.12 Cách sử dụng hàm calc(): * / ko co don vi 
+Ex: height: calc(100% / 3)
+    width: calc(100vh - 200px)
+
+27.1 CSS variables
+:root {
+  --name_var : color 
+}
+.box {
+  background-color: var(name_var)
+}
+
+
+27.5 Phạm vi của biến (local/global)
+- bien khai bao o the cha -> the con sd dc
+
+27.9 Giá trị mặc định cho biến
+background-color: var(--name_color, orange) -> orange : du phong
+
+28.3 Attribute selector(NC) : [atributes_of_element] {}
+*
+[thuộc tính]	[target]	Chọn tất cả các phần tử có thuộc tính đích
+[thuộc tính=giá trị]	[target="_blank"]	Chọn tất cả các phần tử với target = "_blank"
+[thuộc tính~=giá trị]	[title~="flower"]	Chọn tất cả các phần tử có thuộc tính tiêu đề chứa từ "hoa"
+[thuộc tính|=giá trị]	[lang|="en"]	Chọn tất cả các phần tử có giá trị thuộc tính lang bằng "en" hoặc Bắt đầu bằng "en-"
+[thuộc tính^=giá trị]	a[href^="https"]	Chọn mọi phần tử <a> có giá trị thuộc tính href bắt đầu bằng "https"
+[attribute$=value]	a[href$=".pdf"]	Chọn mọi phần tử <a> có giá trị thuộc tính href kết thúc bằng ".pdf"
+[thuộc tính*=giá trị]	a[href*="w3schools"]	Chọn mọi phần tử <a> có giá trị thuộc tính href chứa chuỗi con "w3schools"
+1/
+a[target="_blank"] {
+  background-color: yellow;
+}
+a[target] {
+  background-color: red;
+}
+Ex:
+<a href="https://www.w3schools.com">W3schools.com</a><br> -> yellow 
+<a href="https://www.microsoft.com" target="_blank">Microsoft.com</a> -> red 
+
+2/
+[title~="flower"][title~=flo] {
+  border: 5px solid yellow;
+}
+-> chi img co title la flower  & flo-> moi co border
+
+3/
+[lang|="en"] {
+  background: yellow;
+}
+Ex: 
+<p lang="en">Hello!</p> -> css
+<p lang="en-us">Hi!</p> -> css
+<p lang="en-gb">Ello!</p> -> css
+<p lang="us">Hi!</p>
+<p lang="no">Hei!</p>
+
+*Flex Box :
+-> the con inline trong the cha display:flex -> set width/height
+1. Thuộc tính Container (cha)
+*display:
+flex: Kích hoạt flexbox trên container.
+inline-flex: Kích hoạt flexbox trên container dưới dạng inline.
+
+*flex-direction: Định hướng chính của các item.
+row (mặc định):item  Hướng từ trái sang phải.
+row-reverse:item  Hướng từ phải sang trái.
+column: item Hướng từ trên xuống dưới.
+column-reverse: item Hướng từ dưới lên trên.
+
+*flex-wrap: Điều khiển sự bọc của các item.
+nowrap (mặc định): Không bọc, tất cả các item trên một dòng.
+wrap: Các item bọc xuống dòng mới nếu không đủ chỗ.
+wrap-reverse: Các item bọc xuống dòng mới theo hướng ngược lại.
+
+*flex-flow: Kết hợp flex-direction và flex-wrap.
+Ví dụ: flex-flow: row wrap;
+
+*justify-content: Căn chỉnh các item theo trục chính (main axis: X) 
+flex-start (mặc định): Căn về đầu trục chính.
+flex-end: Căn về cuối trục chính.
+center: Căn giữa.
+space-between: Khoảng cách đều giữa các item.
+space-around: Khoảng cách đều xung quanh các item.
+
+*align-items: Căn chỉnh các item theo trục phụ (cross axis: Y).
+stretch (mặc định): Kéo giãn để lấp đầy container.
+flex-start: Căn về đầu trục phụ.
+flex-end: Căn về cuối trục phụ.
+center: Căn giữa.
+baseline: Căn theo đường cơ sở của các item.
+
+*align-content(can it nhat co 2 hang chua cac item): Căn chỉnh các dòng của các item khi có nhiều dòng (trục phụ).
+stretch (mặc định): Kéo giãn item(chiadeu) để lấp đầy container.
+flex-start: Căn về đầu trục phụ.
+flex-end: Căn về cuối trục phụ.
+center: Căn giữa.
+space-between: Khoảng cách đều giữa các dòng.
+space-around: Khoảng cách đều xung quanh các dòng.
+space-evenly: kc deu nhau giua cac item va border
+
+2. Thuộc tính Item (con)
+*order: Đặt thứ tự sắp xếp của item.
+
+Giá trị mặc định là 0. Có thể là số nguyên dương hoặc âm.
+*flex-grow: Định nghĩa khả năng tăng kích thước của item nếu còn không gian (dọc theo trục chính).
+
+Giá trị mặc định là 0. Số nguyên dương để chỉ tỉ lệ tăng.
+*flex-shrink: Định nghĩa khả năng co lại của item nếu không đủ không gian (dọc theo trục chính).
+
+Giá trị mặc định là 1. Số nguyên dương để chỉ tỉ lệ co.
+*flex-basis: Định nghĩa kích thước cơ bản của item trước khi phân chia không gian còn lại.
+
+Giá trị mặc định là auto. Có thể là kích thước cụ thể (px, %, em, etc.).
+*flex: Kết hợp các thuộc tính flex-grow, flex-shrink, và flex-basis.
+
+Ví dụ: flex: 1 1 auto;
+
+*align-self: Căn chỉnh item riêng lẻ dọc theo trục phụ (ghi đè align-items).
+auto (mặc định): Kế thừa từ align-items của container.
+flex-start: Căn về đầu trục phụ.
+flex-end: Căn về cuối trục phụ.
+center: Căn giữa.
+baseline: Căn theo đường cơ sở của item.
+stretch: Kéo giãn để lấp đầy container.
+
+*Gap
+gap: Định nghĩa khoảng cách giữa các item trong container flex.
+row-gap: Định nghĩa khoảng cách giữa các hàng (trục phụ).
+column-gap: Định nghĩa khoảng cách giữa các cột (trục chính).
+->Thuộc tính gap trong Flexbox (và CSS Grid) 
+được sử dụng để tạo khoảng cách giữa các item bên trong containe
+29.3 Justify-content:(x)
+- flex-star (day cac phan tu ve trai) / flex-end(phai)  / center(giua)
+- space-between(day cac phan tu ra xa nhau nhat->dinh vien) / space-around (tao k/c deu giua cac phan tu)
+- space-evenly (tao kc deu tu le toi cac phan tu va giua cac phan tu)
+
+29.7 Align-items:(y)
+- stretch (keu dai phan tu theo chieu cross (y) == height cua phan tu chua no)
+- flex-start : can len tren / end: can xuong duoi  / center: giua
+- baseline: line chu bang nhau 
+
+29.10 Flex-wrap và align-content
+-flex-wrap: wrap; -> bao boc item (xuong hang neu full)
+- align-content: center/ flex-start /flex-end / center / space-around,evenly,between
+
+29.17 Align-self, flex-grow.
+* Align-self: can chinh 1 so item 
+.item:nth-child(6): stretch (item 6 keo dan height = 100%)
+
+* Flex grow: 
+.container {
+  display: flex;
+}
+.item {
+  flex-grow: 1 // cac item chiem cung size 
+}
+
+.item:nth-child(2), .item:nth-child(1) {
+  flex-grow:1 // item 2 ,1 cung size
+}
+
+29.20 Flex-shrink, flex-basis
+* flex-shrink : value // cac item cung value -> cung size (kiem soat co lai item)
+* flex-basis : set width
+
+29.22 Kết hợp Flex grow, shrink, basis.
+* flex: grow shrink basis 
+
+29.23 Thuộc tính order
+.ite:nth-child(3) {
+  order: 2;
+}
+.ite:nth-child(2) {
+  order: 3;
+}
+
+29.24 Margin với Flex-item.
+*Can giua :
+.cha{
+  display: flex;
+}
+.con{
+  margin:auto;
+}
+
+*keo item2,3 qua trai:
+.item:nth-child(2){
+  margin-left:auto;
+}
+
+*keo item 2,3 xuong duoi:
+.item:nth-child{
+  margin-top:auto;
+}
+
+
+31.1 Tìm hiểu về cách sử dụng URL
+1/ protocol (giao thuc) : http,https 
+2/ domain name (ten mien) : fullstack.edu.vn 
+3/ port (cong) : 80(http) / 443(https) 
+4/ path (tuyen duong) /blog/tonghop/..
+5/ query parameter (tham so truy van): ?key1=value1&key2=value2 
+6/ hash : #heading1 
+31.6 Đường dẫn nội bộ trong dự án : ../ -> thoat ra 1 cap folder
+* href = "/" : thu muc goc (Home) 
+* Duong dan tuong doi : ./ ; ../ 
+* Duuong dan tuyet doi: / ; https::/fullstack.edu.vn ; //fullstack.edu.vn
+* Pseudo - Classes trong css (lop gia) : ::hover ,:root, :active ,:first-child, :last-child.
++ :root -> tham chieu toi phan tu goc in html
++ :hover -> doi mau khi tro toi
++ :active -> doi mau khi an tro
++ :first-child -> lay tag dau tien  (li:last-child -> lay tag li dau tien dc css )
++ :last-child -> lay tag cuoi 
+//syntax: tag/id/class:lopgia {} 
+
+* Pseudo - Element (Phan tu gia trong css) : -> tac dong vao ma html bang css (change letter , content , color ,..)
+  ::before, ::after, ::first-letter, ::first-line, ::selection
++ ::before : tag luon dung dau 
+// ex : .box::before {
+  content : ""; bat buoc
+  display : block ;
+  ...
+}
++ ::after : tag luon dung cuoi
++ ::first-letter -> truy cap ki tu dau cua tu
+// ex : h1::first-letter {css} -> ki tu dau trong tag h1 se dc css
++ ::first-line : dong dau tien
++ ::selection : h1::selection {css}   -> boi den se anh huong css
+
+* Padding : dem them vao box  -> background to hon
+// padding : 1para->4huong ; top&bottom left&right (2para); top left&right bottom(3para) ; top right bottom left(4para) -> viet tat
+
+* Border: 
+.box {
+  background-color: green;
+  padding : 10px;
+  boder-top(right,bottom,left)-width: 10px;
+  boder: 10px solid color
+  boder: solid color (auto 2px)
+}
+
+* Margin: -> tach cac div (ko dinh lien) -> ko lam thay doi size cua element(div,..)
+* Box-sizing :  khi them border hay padding -> thay doi kich thuoc div -> dung box-sizing:border-box;(giu nguyen kich thuoc ban dau)
+ // huy chuc nang boder-box
+ .box {
+  box-sizing :unset
+ }
+
+* background - image : 
+ .img {
+  background-image:linear-gradient(goc xoay(deg),rgba(0,0,255,255),color) -> tao dai mau chuyen deu dan
+  background-image: url(link)-> tren , url(link) -> duoi;
+  background-size: 100% 100% (ngang doc) / contain(bao toan size img) / cover (tran het trinh duyet -> thay doi img) / auto : mac dinh
+  background-repeat: repeat - y (lap lai anh theo chieu doc)
+  background-origin: padding-box (img do vao phan padding tro vao) / border-box : img do vao tran vien tu border tro vao
+  background-position:bottom(top,right,left) center(right,..) (can giau duoi)
+  -> viet 1 gia tri gia tri thu 2 auto la center
+  -> top 20px right 20px : goc tren ben phai (cach vien tren phai 20px)
+  -> 30px 50px : cach trai 30px, tren 50px(Oxy o goc tren cung ben trai)
+
+ }
+
+ *cu phap sorthand background
+ background : url(link) no-repeat center(pos) / contain(size) 
+
+ * Position relative : lay vi tri chinh no luc dau lam goc 
+ * Position Absolute: lay the cha/ong/..(co thuoc tinh position(relative/fixed/sticky)) lam goc 
+h1 {
+  // co relative thi top vs left.... hoat dong
+  position: relative
+  top: 100px;
+  left: 100p;
+}
+
+
+//
+  tag_con {
+   position:absolute ;
+   top:0px;
+   left:0px;
+   right:0px;
+   bottom:0px;
+   background color: rgba(255,255,255,255,0.5) -> phu lop mo len the cha
+  }
+
+* position: fixed  phu thuoc trinh duyet -> dung fixed (giu tag dinh vao dau trang web khi keo xuong)
+* position: sticky -> keo xuong trung tag chua sticky -> bi dinh vao dau trinh duyet
+
+Ex: 
+  
+.head {
+  // bat buoc phao co top 
+    top:0px;
+    position:sticky;
+   // 
+    margin-top:40px;
+    background-color: aqua;
+    width: 100vw;
+}
+
+
+* cac cach can giua trong css: 
+c1:
+h1{
+  text-align: center ;
+  line-height: 100px;
+}
+c2:
+.box {
+  height:100px;
+   text-align: center;
+   line-height:100px;
+}
+=> box la cha tag h1 (h1 ke thua)
+
+c3:
+.box {
+  display:flex;
+  
+}
+
+h1 {
+  margin:auto;
+}
+
+c4:
+.box {
+  display:flex;
+  align-item: center; (can giua theo chiu doc)
+  justify-content:center/space-between(neu co 3 tu thi 2 tu sat ra le)/sapce-around;
+}
+
+h1 {
+  margin:auto;
+}
+
+c5:
+.box{
+    height:100px;
+    background-color: aqua;
+    position :relative;
+    
+}
+
+h1 {
+    position: absolute;
+    top :50%;//1/2 the chua no theo truc y
+    left:50%;// 1/2 the chua no theo truc x
+    transform:translate(-50%,-50%)// lui 1/2 theo chinh no (truc X,Y)
+}
+
+c5:
+.box {
+  --height : 100px;// chi sua cho nay ko can sua nhiu cho
+  hieght : var(--height);
+  text-align :center;
+}
+
+h1{
+  line-height: var(--height);
+}
+
+c6:
+.box {
+  background-color:red;
+  height: 100px;
+  display:flex;
+}
+h1{
+  margin:auto;
+  position :relative;
+}
+
+h1::after {
+  position: absolute;
+  left:0;
+  content:"";
+  border-left: 3px solid #333;
+  height: 50px;
+  top: 50px;
+  transform: translateY(-50%);
+}
+
+* hien thi anh du phong khi anh chinh bi lopgia
+vd: anh_du_phong: picture.img -> luu trong src cua img
+
+<img onerror="this.src='/img/picture.jpg'" src="link_img"> </img>
+
+// background-img:  url('link_img'), uel('/img/picture.jpg')
+
+
+* FlexBox :flex container vs flex item [ main axist(x)(trai qua phai) vs cross axist(y)(tren -> duoi) ]
+- display:flex | inline-flex -> sd flex box
+- flex-direction: row | column -> main axist nam ngang | doc 
+- flex-wrap: nowrap(ko xuong dong) mac dinh | wrap(xuong dong) | wrap-reverse (dao ngc cross star vs cross end)
+- flex-basis: set kich thuoc cua main-size (kich thuoc theo chieu ngang cua item theo chieu main axist)
+- justify-content(main-axist): flex-start(left) | flex-end(right)| space-around(2 item ko dinh vao le va cach deu nhau) | space-between(2 item dinh vao le) | center -> ghi vao the cha
+- justify-self: flex-start | flex-end | center -> con
+- align-items(cross-axist): flex-start(up) | flex-end(down) | center |stretch(keo gian item ra 2 bien cros-star vs cross-end)-> ghi vao the cha 
+- align-self: flex-start | flex-end | center -> con
+- flex-grow: number
+- flex-shrink: number
+- flex: number -> cu phap viet ngan
+- order: number
+=> FlexBox playground (web study)
+
+
+*BEM (Block Element Modifier) : tieu chuan dat ten css 
+
+# y nghia : 
+ - block : khoi;
+ - element : tp trong khoi
+ - modifier: bo sung y nghia cho block vs element
+
+# cu phap :
+- .block;
+- .block__element 
+- .block--modifier
+- .block__element--modifier 
+
+
+*Grid : n col/row : n+1 line col/row
+- Container Level Properties
+1. display: grid; (thiet lap che de hien thi container grid)
+
+2. grid-template-columns/rows: xac dinh so va kich thuoc col/row trong grid 
+Ex:
+.container {
+    grid-template-columns/rows: 100px 200px 100px; (3col)
+    /* Hoặc sử dụng các đơn vị khác nhau như fr */
+    grid-template-columns/rows: 1fr 2fr 1fr;
+    /* Hoặc sử dụng repeat() */
+    grid-template-columns/rows: repeat(3, 1fr) | 10px repeat(2,3fr);
+    grid-auto-row: 100px (auto size row 100px for all rows) || minmax(30px,auto) 
+}
+=> fr chia deu cac cot (ke ca khi co gap)
+
+Ex: chia deu 4 cot voi 8 item (gap20px)
+- flex:
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+}
+
+.item {
+  width: calc(25% - 20px);
+  margin-left: 20px;
+}
+
+-grid:
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+Ex:cell 7 chiem 2 cot (line 2->4)
+- line col end = -1 
+.item-7 {
+  grid-colmun-start: 2;
+  grid-colmun-end: 4;
+  cu phap ngan 
+  grid-columns: 2 / 4;
+}
+
+3.grid-template-areas:Xác định layout bằng cách đặt tên cho các vùng trong grid
+Ex:
+.container {
+    grid-template-areas:
+        "hd hd hd"
+        "sidebar content content"
+        "footer footer footer";
+}
+.header {
+    header chiem het hang 1 
+    grid-area: hd;
+}
+.sidebar {
+    grid-area: sidebar;
+}
+.content {
+    grid-area: content;
+}
+.footer {
+    grid-area: footer;
+}
+
+4.grid-gap: thiet lap kc col vs row
+Ex:
+.container {
+    grid-gap: 10px;
+}
+
+5.grid-column/row-gap: distance between cols/rows
+
+6.justify/align-items:Căn chỉnh nội dung của các mục con theo chiều ngang/doc.
+Ex:
+.container {
+    justify/align-items: start | end | center | stretch;
+}
+
+
+7.place-items: ket hop justify-items vs align-items 
+Ex:
+.container {
+    place-items: center center;
+}
+
+9.justify/align-content:Căn chỉnh toàn bộ grid theo chiều ngang/doc trong container.
+Ex:
+.container {
+    justify/align-content: start | end | center | stretch | space-between | space-around | space-evenly;
+}
+
+10.place-content:Kết hợp justify-content và align-content
+Ex:
+.container {
+    place-content: center center;
+}
+
+
+11. grid-auto-flow: column; (top -> bottom > left->right)
+    greid-template-columns: 80px 100px 120px; 
+    => auto sinh ra new col neu co them item 
+    grid-template-col: repeat(3, 1fr);
+    =>neu nhiu item , het hang -> sinh ra cot moi 
+    
+12. grid-template-columns: repeat( auto-fill, minmax(100px, 1fr));
+=> size min = 100px > neu nho hon ->item xuong hang (fr sau khi xuong thiet lap size chia deu cho cac cot)
+=> autofill: neu qua nhieu ko gian trong -> van giu nguyen size item 
+=> autofit : ------------------------------> keo gian item lap day trinh duyet
+- Item Level Properties
+
+13. grid-row/col: span 2(item chiem 2 hang/cot)
+    grid-auto-flow: dense(auto lap dau khong trong)
+1.grid-column/row-start/end:Xác định vị trí bắt đầu/ketthuc của một mục con theo cột/dong.
+Ex:
+.item {
+    grid-column-start: 1;
+}
+
+2.grid-column/row:Kết hợp grid-column/row-start và grid-column/row-end.
+Ex:
+.item {
+    grid-column: 1 / 3;
+}
+
+3.grid-area: ket hop grid-row/col-start, grid-row/col-end
+Ex:
+.item {
+    grid-area: 1 / 1 / 3 / 3;
+}
+
+4.justify/align-self:Căn chỉnh mục con theo chiều ngang/doc.
+Ex:
+.item {
+    justify-self: start | end | center | stretch;
+}
+
+5.place-self:Kết hợp justify-self và align-self.
+Ex:
+.item {
+    place-self: center center;
+}
+
+
+*Table 
+<table>: Defines the table.
+<tr>: Defines a table row.
+<th>: Defines a table header. By default, the content inside <th> is bold and centered.
+<td>: Defines a table cell.
+row/colspan: num => gop num hang/cot
+
+
+*Form vs Validation 
+<form>
+    <label for="text">Text:</label>
+    <input type="text" id="text" name="text"><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="number">Number:</label>
+    <input type="number" id="number" name="number"><br><br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date"><br><br>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time"><br><br>
+
+    <label for="checkbox">Checkbox:</label>
+    <input type="checkbox" id="checkbox" name="checkbox"><br><br>
+
+    <label for="radio">Radio:</label>
+    <input type="radio" id="radio" name="radio"><br><br>
+
+    <label for="file">File:</label>
+    <input type="file" id="file" name="file"><br><br>
+
+    <label for="range">Range:</label>
+    <input type="range" id="range" name="range"><br><br>
+
+    <label for="color">Color:</label>
+    <input type="color" id="color" name="color"><br><br>
+
+    <label for="tel">Telephone:</label>
+    <input type="tel" id="tel" name="tel"><br><br>
+
+    <label for="url">URL:</label>
+    <input type="url" id="url" name="url"><br><br>
+
+    <input type="hidden" id="hidden" name="hidden" value="hiddenValue">
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
+ *
+text: Dùng để nhập văn bản thông thường.
+password: Dùng để nhập mật khẩu, các ký tự sẽ được ẩn đi.
+email: Dùng để nhập địa chỉ email, trình duyệt sẽ kiểm tra định dạng email.
+number: Dùng để nhập số, có thể sử dụng mũi tên lên/xuống để tăng/giảm giá trị.
+date: Dùng để chọn ngày từ một bộ chọn ngày.
+time: Dùng để chọn giờ từ một bộ chọn giờ.
+checkbox: Dùng để chọn một hoặc nhiều tùy chọn.
+radio: Dùng để chọn một tùy chọn duy nhất trong một nhóm.
+file: Dùng để chọn tệp để tải lên.
+range: Dùng để chọn giá trị trong một khoảng, hiển thị dưới dạng thanh trượt.
+color: Dùng để chọn màu từ một bộ chọn màu.
+tel: Dùng để nhập số điện thoại, trình duyệt có thể cung cấp bộ chọn số điện thoại.
+url: Dùng để nhập địa chỉ URL, trình duyệt sẽ kiểm tra định dạng URL.
+hidden: Dùng để lưu trữ dữ liệu mà không hiển thị cho người dùng.
+submit: Nút để gửi biểu mẫu.
+reset: Nút để đặt lại biểu mẫu về trạng thái ban đầu.
+
+*Label vs For attribute :
+, thẻ <label> được sử dụng để xác định nhãn cho các phần tử <input>.
+ Thuộc tính for của thẻ <label> được liên kết với thuộc tính id của phần tử <input>
+   <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+
+*Radio(chon 1) vs checkbox (chon dc nhieu)
+
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label><br>
+
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+
+
+    <input type="checkbox" id="reading" name="hobbies" value="reading">
+    <label for="reading">Reading</label><br>
+
+    <input type="checkbox" id="traveling" name="hobbies" value="traveling">
+    <label for="traveling">Traveling</label><br>
+
+    <input type="checkbox" id="cooking" name="hobbies" value="cooking">
+    <label for="cooking">Cooking</label><br>
+
+*Submit 
+
+Trong HTML, việc gửi biểu mẫu được thực hiện bằng cách sử dụng phần tử <input>
+ với type="submit" hoặc phần tử <button> với type="submit". Khi người dùng nhấp vào nút này,
+  dữ liệu của biểu mẫu sẽ được gửi đến URL được chỉ định trong thuộc tính action của thẻ <form>.
+  Ví dụ cơ bản với <input type="submit">:
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Button Example</title>
+</head>
+<body>
+
+<h2>Submit Button Example</h2>
+
+<form action="submit_form.php" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+  Ví dụ với <button type="submit">:
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Button Example</title>
+</head>
+<body>
+
+<h2>Submit Button Example</h2>
+
+<form action="submit_form.php" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+
+<form action="submit_form.php" method="post">:
+
+action: URL của trang hoặc tập lệnh sẽ xử lý dữ liệu biểu mẫu khi biểu mẫu được gửi.
+method: Phương thức HTTP để gửi dữ liệu biểu mẫu, thường là post hoặc get.
+<input type="submit" value="Submit">:
+
+Tạo một nút gửi biểu mẫu. Khi người dùng nhấp vào nút này, dữ liệu trong biểu mẫu sẽ được
+ gửi đến URL được chỉ định trong thuộc tính action của thẻ <form>.
+<button type="submit">Submit</button>:
+
+Tạo một nút gửi biểu mẫu bằng thẻ <button>. Thẻ này linh hoạt hơn vì bạn có thể đặt nội 
+dung HTML bên trong nó, chẳng hạn như biểu tượng hoặc văn bản có định dạng.
+
+
+  <script>
+        function validateForm(event) {
+            // Ngăn chặn biểu mẫu gửi theo cách thông thường
+            event.preventDefault();
+
+            // Lấy giá trị của các trường biểu mẫu
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+
+            // Kiểm tra xem các trường đã được điền đầy đủ hay chưa
+            if (username === "" || email === "") {
+                alert("Please fill out all fields.");
+            } else {
+                // Nếu tất cả các trường đều hợp lệ, gửi biểu mẫu
+                document.getElementById('myForm').submit();
+            }
+        }
+    </script>
+
+
+* Form validation partern  
+Thuộc tính pattern trong HTML được sử dụng để xác định một biểu thức chính quy (regular expression) 
+mà đầu vào của người dùng phải tuân theo để được coi là hợp lệ.
+partern email to check email : <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+partern number vietnamese to check phone number:  partern="(84|0[3|5|7|8|9])+([0-9]{8})\b"
+ <input type="text" id="letters" name="letters" pattern="[A-Za-z]+" title="Please enter only letters."><br><br>
+
+-explain:
+ pattern="[A-Za-z]+":
+Chỉ cho phép các chữ cái viết hoa và viết thường.
+Dấu cộng + có nghĩa là một hoặc nhiều ký tự.
+
+ pattern="\d{3}-\d{3}-\d{4}":
+\d đại diện cho một chữ số.
+{3} nghĩa là ba chữ số.
+Dấu gạch ngang - là bắt buộc.
+
+pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$":
+
+[a-z0-9._%+-]+ đại diện cho tên người dùng email, cho phép các ký tự chữ thường, số, dấu chấm, dấu gạch dưới, phần trăm, dấu cộng, và dấu trừ.
+@ là bắt buộc.
+[a-z0-9.-]+ đại diện cho tên miền, cho phép các ký tự chữ thường, số, dấu chấm và dấu trừ.
+\. đại diện cho dấu chấm.
+[a-z]{2,}$ đại diện cho miền cấp cao nhất (ví dụ: .com, .org) với ít nhất hai ký tự chữ thường.
+Tổng cộng có ba chữ số, dấu gạch ngang, ba chữ số, dấu gạch ngang, và bốn chữ số.
+-some partern in html
+(?=.*\d): Phải chứa ít nhất một chữ số.
+(?=.*[a-z]): Phải chứa ít nhất một chữ cái viết thường.
+(?=.*[A-Z]): Phải chứa ít nhất một chữ cái viết hoa.
+(?=.*[@#$%^&+=]): Phải chứa ít nhất một ký tự đặc biệt trong số các ký tự @#$%^&+=.
+.{8,}: Phải có ít nhất 8 ký tự trở lên.
+
+
+*Text-arial
+Thẻ <textarea>
+Thẻ <textarea> được sử dụng để tạo một trường văn bản nhiều dòng.
+ Bạn có thể chỉ định số hàng và số cột của trường văn bản bằng các thuộc tính rows và cols.
+ Ex:
+ <form>
+    <label for="comments">Comments:</label><br>
+    <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Write your comments here..."></textarea><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+- explain: 'name': Tên của trường văn bản, được sử dụng khi gửi dữ liệu biểu mẫu.
+
+*Select 
+- Thẻ <select>
+Thẻ <select> được sử dụng để tạo một danh sách thả xuống.
+ Mỗi tùy chọn trong danh sách được xác định bằng thẻ <option>.
+
+ Ex:
+ <form>
+    <label for="country">Select your country:</label><br>
+    <select id="country" name="country">
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+        <option value="uk">United Kingdom</option>
+        <option value="au">Australia</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+- Thẻ <select> với Thuộc tính multiple
+Bạn cũng có thể cho phép người dùng chọn nhiều tùy chọn bằng 
+cách thêm thuộc tính multiple vào thẻ <select>.
+Ex:
+    <select id="fruits" name="fruits" multiple size="4">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="cherry">Cherry</option>
+        <option value="date">Date</option>
+        <option value="grape">Grape</option>
+        <option value="kiwi">Kiwi</option>
+    </select><br><br>
+
+* atributes of form tag :
+Thẻ <form> trong HTML có nhiều thuộc tính giúp bạn kiểm soát cách thức và nơi dữ liệu biểu mẫu được gửi, cũng như cách thức hiển thị và xử lý dữ liệu. Dưới đây là danh sách các thuộc tính chính của thẻ <form> cùng với mô tả và ví dụ về cách sử dụng chúng:
+
+Các thuộc tính của thẻ <form>:
+action: Xác định URL nơi dữ liệu biểu mẫu sẽ được gửi.
+method: Xác định phương thức HTTP được sử dụng khi gửi dữ liệu biểu mẫu (GET hoặc POST).
+enctype: Xác định cách dữ liệu biểu mẫu sẽ được mã hóa khi gửi đến máy chủ. Có ba giá trị chính:
+application/x-www-form-urlencoded: Mặc định, dữ liệu biểu mẫu được mã hóa theo định dạng URL.
+multipart/form-data: Sử dụng khi bạn cần tải lên các tệp tin.
+text/plain: Dữ liệu biểu mẫu không được mã hóa.
+autocomplete: Xác định xem trình duyệt có nên tự động điền thông tin người dùng trước đây vào biểu mẫu hay không (on hoặc off).
+target: Xác định nơi để mở kết quả trả về khi gửi biểu mẫu (_self, _blank, _parent, _top hoặc tên khung cụ thể).
+novalidate: Khi có thuộc tính này, trình duyệt sẽ bỏ qua việc xác thực biểu mẫu trước khi gửi.
+name: Đặt tên cho biểu mẫu, có thể sử dụng để truy cập biểu mẫu thông qua JavaScript.
+accept-charset: Xác định các bộ ký tự được chấp nhận cho dữ liệu biểu mẫu.
+rel: Chỉ định mối quan hệ giữa tài liệu hiện tại và tài liệu được gửi đến (chỉ khi sử dụng method="GET" và target="_blank").
+Ex:
+<form 
+    action="/submit_form.php" 
+    method="post" 
+    enctype="multipart/form-data" 
+    autocomplete="on" 
+    target="_blank" 
+    novalidate 
+    name="exampleForm" 
+    accept-charset="UTF-8">
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="file">Upload file:</label>
+    <input type="file" id="file" name="file"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+-explain:
+action="/submit_form.php": Dữ liệu biểu mẫu sẽ được gửi đến URL /submit_form.php.
+method="post": Dữ liệu biểu mẫu sẽ được gửi bằng phương thức POST.
+enctype="multipart/form-data": Biểu mẫu có thể tải lên các tệp tin.
+autocomplete="on": Trình duyệt sẽ tự động điền các giá trị trước đây của người dùng.
+target="_blank": Kết quả trả về sẽ mở trong một tab hoặc cửa sổ mới.
+novalidate: Trình duyệt sẽ bỏ qua việc xác thực biểu mẫu trước khi gửi.
+name="exampleForm": Tên của biểu mẫu, có thể sử dụng trong JavaScript để truy cập biểu mẫu.
+accept-charset="UTF-8": Dữ liệu biểu mẫu sẽ được mã hóa bằng bộ ký tự UTF-8.
+
+*atributes of input tag 
+Các thuộc tính của thẻ <input>:
+type: Xác định loại dữ liệu người dùng có thể nhập vào.
+
+text: Dữ liệu văn bản.
+password: Dữ liệu mật khẩu (hiển thị dưới dạng dấu sao).
+email: Địa chỉ email.
+number: Số.
+checkbox: Ô chọn.
+radio: Nút radio.
+file: Tệp tin tải lên.
+Và nhiều loại khác nhau như date, time, url, tel,...
+name: Tên của trường dữ liệu khi biểu mẫu được gửi đi.
+
+value: Giá trị mặc định của trường dữ liệu.
+
+placeholder: Văn bản mẫu hiển thị trong trường khi chưa có giá trị.
+
+readonly: Chỉ cho phép đọc, không cho phép chỉnh sửa giá trị.
+
+disabled: Vô hiệu hóa trường dữ liệu.
+
+required: Yêu cầu người dùng phải điền vào trường này trước khi gửi biểu mẫu.
+
+size: Chiều dài của trường nhập liệu, dùng chủ yếu với type="text".
+
+maxlength: Số ký tự tối đa cho phép người dùng nhập vào.
+
+min và max: Giá trị tối thiểu và tối đa cho phép đối với các loại number, date, time,...
+
+step: Bước nhảy cho các loại number.
+
+autocomplete: Cho phép hoặc không cho phép trình duyệt điền thông tin từ lần trước cho trường này (on hoặc off).
+
+autofocus: Tự động đặt con trỏ vào trường này khi tải trang.
+
+form: Xác định biểu mẫu mà trường dữ liệu này thuộc về (theo id của biểu mẫu).
+
+multiple: Cho phép chọn nhiều giá trị trong trường input với type="file".
+
+accept: Định dạng tệp được chấp nhận khi sử dụng với type="file".
+
+pattern: Biểu thức chính quy để kiểm tra giá trị nhập vào (thường sử dụng với type="text" hoặc type="email").
+
+checked: Được sử dụng với type="checkbox" hoặc type="radio" để xác định trạng thái mặc định là đã chọn.
+
+*Pseudo form : pseudo-class (lớp giả) có thể áp dụng cho các phần tử <form> để tùy chỉnh các trạng thái hoặc hành vi khác nhau.
+
+1/:valid: Áp dụng khi phần tử <input> hoặc <textarea> trong biểu mẫu có giá trị hợp lệ (được xác thực).
+Ex: 
+input:valid {
+    border-color: green;
+}
+
+2/:invalid: Áp dụng khi phần tử <input> hoặc <textarea> trong biểu mẫu có giá trị không hợp lệ (không được xác thực).
+Ex:
+input:invalid {
+    border-color: red;
+}
+
+3/:required: Áp dụng cho các phần tử <input> hoặc <textarea> yêu cầu dữ liệu phải được nhập vào.
+Ex:
+input:required {
+    background-color: #f2f2f2;
+}
+
+4/:optional: Áp dụng cho các phần tử <input> hoặc <textarea> không yêu cầu dữ liệu nhập vào.
+Ex: input:optional {
+    color: gray;
+}
+
+
+5/:focus: Áp dụng khi phần tử <input>, <textarea> hoặc <select> đang được chọn hoặc có trọng tâm.
+css
+Ex:
+input:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+6/ :disabled: Áp dụng khi phần tử <input>, <textarea> hoặc <select> bị vô hiệu hóa.
+Ex:
+input:disabled {
+    opacity: 0.5;
+}
+
+7/ :enabled: Áp dụng khi phần tử <input>, <textarea> hoặc <select> được kích hoạt.
+Ex:
+input:enabled {
+    background-color: #fff;
+}
+
+8/:checked: Áp dụng cho phần tử <input type="radio"> hoặc <input type="checkbox"> được chọn
+Ex:
+input[type="checkbox"]:checked {
+    transform: scale(1.2);
+}
+
+9/:placeholder-shown: Áp dụng khi placeholder của phần tử <input> hoặc <textarea> được hiển thị.
+Ex:
+input:placeholder-shown {
+    color: gray;
+}
+
+10/:not(:placeholder-shown): Áp dụng khi placeholder của phần tử <input> hoặc <textarea> không được hiển thị (khi đã có giá trị).
+Ex:
+input:not(:placeholder-shown) {
+    font-weight: bold;
+}
+
+
+*placeholder-shown:Trong CSS, pseudo-class :placeholder-shown được sử dụng để áp dụng các quy tắc cho các phần tử
+ <input> hoặc <textarea> khi placeholder của chúng được hiển thị.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placeholder Shown Example</title>
+    <style>
+        /* Áp dụng cho các phần tử input khi placeholder được hiển thị */
+        input:placeholder-shown {
+            color: gray;
+            font-style: italic;
+        }
+
+        /* Đổi màu nền khi focus vào input */
+        input:focus {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Placeholder Shown Example</h2>
+
+<form>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" placeholder="Enter your username"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="Enter your email"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+*Focus-within: Trong CSS, pseudo-class :focus-within được sử dụng để áp dụng
+ các quy tắc cho một phần tử khi bất kỳ phần tử con nào của nó (hoặc chính nó) được focus vào.
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:focus-within Example</title>
+    <style>
+        /* Áp dụng khi form có bất kỳ phần tử con nào được focus */
+        form:focus-within {
+            border: 2px solid blue;
+            padding: 10px;
+        }
+
+        /* Style cho các phần tử input */
+        input {
+            margin: 5px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>:focus-within Example</h2>
+
+<form>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" placeholder="Enter your username"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" placeholder="Enter your password"><br>
+
+    <input type="submit" value="Login">
+</form>
+
+</body>
+</html>
+
+*tabindex : tabindex là một thuộc tính trong HTML được sử dụng để xác định thứ tự di chuyển 
+của phần tử khi người dùng sử dụng phím tab để điều hướng trên trang web.
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" tabindex="1"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" tabindex="2"><br>
+
+    <button type="button" tabindex="4">Cancel</button>
+    <button type="submit" tabindex="3">Submit</button>
+
+*caret-color là một thuộc tính trong CSS được sử dụng để xác định màu sắc 
+của caret (dấu nháy nhỏ) trong các phần tử có thể chỉnh sửa như <input>, <textarea>, và các phần tử có thuộc tính contenteditable="true".
+
+
+*<legend> là một thẻ trong HTML được sử dụng để định nghĩa tiêu đề cho một nhóm các phần tử 
+trong một biểu mẫu <fieldset>. Thẻ <legend> thường được sử dụng để cung cấp mô tả hoặc tiêu đề 
+cho các phần tử được nhóm lại trong biểu mẫu, giúp người dùng hiểu rõ hơn về mục đích hoặc nội dung
+ của từng nhóm.
+<form>
+  <fieldset>
+    <legend>Personal Information</legend>
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" name="firstname">
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" name="lastname">
+  </fieldset>
+
+  <fieldset>
+    <legend>Account Information</legend>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+  </fieldset>
+
+  <input type="submit" value="Submit">
+</form>
+
+*
+Trong CSS, :not() là một pseudo-class đặc biệt được sử dụng để chọn các phần tử không khớp với một selector cụ thể.
+ Khi kết hợp với :placeholder-shown, :not(:placeholder-shown) sẽ chọn các phần tử không có placeholder hiển thị (tức là đã có giá trị nhập vào).
+
+ *Validation 
+ Ex: hien loi neu input nhap ko hop le
+ form:has(:invalid) .error{
+  display: block;
+ }
+
+ *Contenteditable :Thuộc tính contenteditable trong HTML được sử dụng để cho phép người dùng chỉnh sửa 
+ nội dung của một phần tử trực tiếp trên trang web, giống như một trình soạn thảo đơn giản.
+  Thuộc tính này có thể được áp dụng cho hầu hết các phần tử HTML để biến chúng thành các khu vực chỉnh sửa.
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenteditable Attribute Example</title>
+    <style>
+        .editable {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Editable Content Example</h2>
+
+<div class="editable" contenteditable="true">
+    This content can be edited by the user.
+</div>
+
+<div class="editable" contenteditable="false">
+    This content cannot be edited by the user.
+</div>
+
+<div class="editable">
+    <p contenteditable="true">This paragraph can be edited.</p>
+    <p>This paragraph cannot be edited.</p>
+</div>
+
+</body>
+</html>
+
+
+*Custum checkbox:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Checkbox Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      /* Reset các style mặc định */
+      .checkbox label::before,
+.checkbox label::after {
+    content: '';
+    display: inline-block;
+}
+
+.checkbox label::before {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkbox label{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.checkbox [type="checkbox"]:checked ~ label::before {
+    background: #f05123;
+    border-color: #f05123;
+}
+
+.checkbox [type='checkbox']:checked ~ label::after {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    width: 9px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    rotate: -45deg;
+}
+    </style>
+</head>
+<body>
+  <div class="checkbox">
+    <input type="checkbox" id="remember">
+    <label for="remember">Remember me</label>
+  </div>
+</label>
+
+</body>
+</html>
+
+* Custom radio :
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .radio {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+            line-height: 20px; /* Corrected from 20 to 20px */
+        }
+
+        .radio + .radio {
+            margin-left: 8px;
+        }
+
+        .radio::before,
+        .radio::after {
+            content: "";
+            display: inline-block;
+        }
+
+        .radio::before {
+            width: 12px;
+            height: 12px;
+            margin-right: 6px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .radio:has(:checked)::before {
+            border-color: #f05123;
+        }
+
+        .radio:has(:checked)::after {
+            position: absolute;
+            top: 10px; /* Centering the checkmark within the radio button */
+            left: 3px; /* Adjusted to align properly */
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f05123;
+        }       
+
+        .radio input[type='radio'] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-group">
+        <label for="" class="form-label">Gender</label>
+
+        <label class="radio" for="male">
+            <input type="radio" name="gender" id="male">
+            Male
+        </label>
+
+        <label class="radio" for="female">
+            <input type="radio" name="gender" id="female">
+            Female
+        </label>
+
+        <label class="radio" for="other">
+            <input type="radio" name="gender" id="other">
+            Other
+        </label>
+    </div>
+</body>
+</html>
+
+*Toggle switch button.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .switch label {
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            border-radius: 99px;
+            background: #f9f9f9;
+            outline: 3px solid #e8e8e8;
+            transition: ease 0.2s;
+        }
+
+        .switch label::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+            transition: ease 0.2s;
+        }
+
+        /* bam switch -> c/d button  */
+        .switch [type="checkbox"]:checked + label::before {
+            transform: translateX(30px);
+        }
+
+        .switch [type="checkbox"]:checked + label {
+            background: #72e460;
+        }
+    </style>
+</head>
+<body>
+    <div class="switch">
+        <input type="checkbox" name="" id="switch" hidden checked>
+        <label for="switch"></label>
+    </div>
+</body>
+</html>
+
+*Custom input files:
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="form-group">
+            <label for="avatar" class="form-label">Avatar</label>
+            <input type="file" id="avatar" name="avatar" hidden onchange="preview.src=window.URL.createObjectURL(this.files[0])" />
+            <label for="avatar">
+                <img
+                    id="preview"
+                    class="avatar-preview"
+                    src="https://www.bing.com/th?id=OIP.z3fa8PjEnvzg4bhW61tEOwAAAA&w=150&h=150&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    alt=""
+                />
+            </label>
+        </div>
+    </body>
+</html>
+
+* From 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .contact-form {
+                margin-right: 20px;
+                margin-left: 20px;
+                padding: 28px 32px;
+            }
+
+            .form-row {
+                display: flex;
+                gap: 32px;
+                margin-bottom: 21px;
+            }
+
+            .form-label,
+            .form-input {
+                display: block;
+            }
+
+            .form-label {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #131434;
+            }
+
+            .form-label.large {
+                font-size: 1.3rem;
+            }
+
+            .form-group {
+                flex-grow: 1;
+            }
+
+            .form-input,
+            .form-textarea {
+                width: 100%;
+                outline: none;
+                border: none;
+                border-bottom: 2px solid #e3e3e9;
+                padding: 8px 0 14px 0;
+            }
+
+            .form-error {
+                visibility: hidden;
+                margin-top: 4px;
+                color: red;
+                font-size: 1.3rem;
+            }
+
+            .form-group:has(:invalid:not(:placeholder-shown)) .form-error {
+                /* display: block; */
+                visibility: visible;
+            }
+
+            .form-input::placeholder,
+            .form-textarea::placeholder {
+                color: #bebfc9;
+            }
+
+            .form-group:focus-within .form-label:not(.large) {
+                color: #5f42b6;
+            }
+
+            .form-group:focus-within .form-input {
+                border-color: #5f42b6;
+            }
+
+            /* radio  */
+            .radio-group {
+                display: flex;
+                margin-top: 20px;
+            }
+
+            .radio-btn {
+                display: inline-block;
+            }
+
+            .radio-btn + .radio-btn {
+                margin-left: 24px;
+            }
+            .radio-btn label::before,
+            .radio-btn label::after {
+                content: "";
+                display: inline-block;
+            }
+
+            .radio-btn label::before {
+                width: 12px;
+                height: 12px;
+                margin-right: 8px;
+                border-radius: 50%;
+                border: 2px solid #a7a7b6;
+            }
+
+            .radio-btn label {
+                position: relative;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+            }
+
+            .radio-btn [type="radio"] {
+                display: none;
+            }
+
+            .radio-btn [type="radio"]:checked + label::before {
+                background: #5b32dc;
+                border-color: #5b32dc;
+            }
+
+            .radio-btn [type="radio"]:checked + label::after {
+                position: absolute;
+                top: 6px;
+                left: 2px;
+                width: 9px;
+                height: 5px;
+                border-left: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+                rotate: -45deg;
+            }
+
+            .form-textarea {
+                resize: none;
+                /* content den 200px thi dung lai thanh cuon  */
+                max-height: 200px;
+            }
+
+            .submit-btn {
+                min-width: 160px;
+                height: 50px;
+                color: #fff;
+                outline: none;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 14px;
+                background: #5b32dc;
+                cursor: pointer;
+            }
+
+            .submit-box {
+                justify-content: flex-end;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contact-form">
+            <form
+                name="first-name"
+                method="POST"
+                action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                autocomplete="off"
+            >
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name" class="form-label large"
+                            >First Name</label
+                        >
+                        <input
+                            type="text"
+                            id="first-name"
+                            class="form-input"
+                            name="first-name"
+                            placeholder="Enter first name"
+                            minlength="2"
+                        />
+                        <p class="form-error">Vui long nhap truong nay</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last-name" class="form-label"
+                            >Last Name</label
+                        >
+                        <input
+                            type="text"
+                            id="last-name"
+                            class="form-input"
+                            placeholder="Enter first name"
+                            name="Last-name"
+                            required
+                            min-length=2
+                        />
+                        <p class="form-error">Vui long nhap truong nay</p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-input"
+                            placeholder="Enter email"
+                            name="email"
+                            required
+                            partern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /"
+                        />
+                        <p class="form-error">Vui long nhap truong nay</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            class="form-input"
+                            placeholder="Enter first name"
+                            name="phone"
+                            required
+                            partern="^(0|\+?84)(3|5|7|8|9)[0-9]{8}$";
+                        />
+                        <p class="form-error">Vui long nhap truong nay</p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="" class="form-label">
+                            What the of website do you need
+                        </label>
+
+                        <div class="radio-group">
+                            <div class="radio-btn">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    id="web-design"
+                                    required
+                                />
+                                <label for="web-design" checked>
+                                    Web Design
+                                </label>
+                            </div>
+
+                            <div class="radio-btn">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    id="web-development"
+                                    required
+
+                                />
+                                <label for="web-development">
+                                    Web Development
+                                </label>
+                            </div>
+
+                            <div class="radio-btn">
+                                <input
+                                    type="radio"
+                                    name="type"
+                                    id="logo-design"
+                                    required
+
+                                />
+                                <label for="logo-design"> Logo Design </label>
+                            </div>
+
+                            <div class="radio-btn">
+                                <input type="radio" name="type" id="other" value="logo-design" />
+                                <label for="other"> Other</label>
+                            </div>
+
+                            <p class="form-error">Vui long chon truong nay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="message" class="form-label">
+                            Message
+                        </label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            class="form-textarea"
+                            placeholder="Write your message..."
+                            oninput="onResize(this)"
+                            required
+                            minlength="10"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row submit-box">
+                    <button class="submit-btn" type="submit">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function onResize(e) {
+                // auto hien thanh cuon
+                e.style.height = "auto";
+                // auto hien chieu cao cua textarea
+                a.style.height = e.scrollHeight + "px";
+            }
+        </script>
+    </body>
+</html>
+
+
+*Filter :
+Thuộc tính filter trong CSS được sử dụng để áp dụng các hiệu ứng đồ họa như làm mờ,
+ thay đổi màu sắc, độ sáng, độ tương phản và nhiều hiệu ứng khác lên các phần tử HTML.
+  Dưới đây là các thuộc tính có thể sử dụng với filter
+
+1.blur(px): Làm mờ hình ảnh.
+filter: blur(5px);
+
+2.brightness(%): Điều chỉnh độ sáng của hình ảnh. Giá trị 100% là độ sáng ban đầu.
+filter: brightness(150%);
+
+3.contrast(%): Điều chỉnh độ tương phản của hình ảnh. Giá trị 100% là độ tương phản ban đầu.
+filter: contrast(200%);
+
+4.drop-shadow(h-shadow v-shadow blur spread color): Thêm bóng đổ vào hình ảnh.
+filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.5));
+=> background phải trong suốt -> đổ bóng element
+
+5.grayscale(%): Chuyển hình ảnh thành tông màu xám. Giá trị 100% là hoàn toàn tông màu xám.
+filter: grayscale(100%);
+
+6.hue-rotate(deg): Điều chỉnh màu sắc của hình ảnh bằng cách xoay các giá trị hue (sắc độ) theo góc độ đã cho.
+css
+filter: hue-rotate(90deg);
+
+7.invert(%): Đảo ngược màu sắc của hình ảnh. Giá trị 100% là hoàn toàn đảo ngược.
+filter: invert(100%);
+
+8.opacity(%): Điều chỉnh độ mờ đục của hình ảnh. Giá trị 100% là hoàn toàn mờ đục (không trong suốt).
+filter: opacity(50%);
+
+9.saturate(%): Điều chỉnh độ bão hòa màu của hình ảnh. Giá trị 100% là độ bão hòa ban đầu.
+filter: saturate(200%);
+
+10.sepia(%): Chuyển hình ảnh thành tông màu nâu đỏ. Giá trị 100% là hoàn toàn tông màu sepia.
+filter: blur(5px) brightness(150%) contrast(200%);
+
+*hue-rotate:
+Thuộc tính hue-rotate trong CSS được sử dụng để xoay các giá trị hue (sắc độ) của màu sắc
+ trong một phần tử. Nó thay đổi các màu sắc theo một vòng tròn màu sắc, làm cho các màu sắc
+  chuyển đổi thành màu sắc khác dựa trên giá trị góc đã cho.
+
+
+*Animation :https://cubic-bezier.com/#.17,.67,.83,.67s
+1. @keyframes: Defines the intermediate steps in a CSS animation sequence.
+ It uses a name and a series of percentage values (or from/to) to define the sequence.
+ Xác định các bước trung gian trong chuỗi hoạt ảnh CSS. Nó sử dụng tên và một chuỗi các giá trị phần trăm (hoặc từ/đến) để xác định trình tự.
+ Ex:
+ @keyframes animation-name {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(50px); }
+  100% { transform: translateX(0); }
+}
+
+2. animation: A shorthand property for setting all the animation properties (except animation-play-state) at once.
+Ex: animation: animation-name 2s ease-in-out 1s infinite reverse both;
+
+3. animation-name
+=> Specifies the name of the @keyframes animation to be used.
+Ex: animation-name: animation-name;
+
+4. animation-duration
+=> Specifies the length of time an animation should take to complete one cycle.
+Ex: animation-duration: 2s;
+
+5. animation-timing-function
+=> Specifies the speed curve of the animation.
+Ex: animation-timing-function: ease-in-out;
+Common values include:
+- linear
+- ease
+- ease-in
+- ease-out
+- ease-in-out
+- step-start
+- step-end
+- steps(int, start/end)
+- cubic-bezier(n, n, n, n)
+
+6. animation-delay
+Specifies a delay before the animation starts.
+Ex: animation-delay: 1s;
+
+7. animation-iteration-count
+=> Specifies the number of times an animation should repeat.
+Ex: animation-iteration-count: infinite;
+
+8. animation-direction
+=> Specifies whether the animation should play in reverse on alternate cycles.
+Ex: animation-direction: reverse;
+Common values include:
+- normal
+- reverse
+- alternate
+- alternate-reverse
+
+9. animation-fill-mode
+=> Specifies how a CSS animation applies styles to its target before and after its execution.
+=> ket thuc aimation o diem cuoi 
+Ex: animation-fill-mode: forwards;
+Common values include:
+- none
+- forwards
+- backwards
+- both
+
+10. animation-play-state
+=> Specifies whether the animation is running or paused.
+Ex: animation-play-state: paused;
+Common values include:
+- running
+- paused
+Example Usage
+@keyframes example {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(100px); }
+  100% { transform: translateX(0); }
+}
+
+.element {
+  animation-name: example;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+  animation-play-state: running;
+}
+
+*transform Functions
+1. Translate: Moves an element from its current position.
+translateX(x)
+translateY(y)
+translate(x, y)
+translateZ(z) (3D transform)
+translate3d(x, y, z)
+transform: translateX(100px);
+
+
+2. Rotate: Rotates an element around a fixed point.
+rotate(angle)
+rotateX(angle) (3D transform)
+rotateY(angle) (3D transform)
+rotateZ(angle) (3D transform)
+rotate3d(x, y, z, angle)
+transform: rotate(45deg);
+
+
+3. Scale: Resizes an element.
+scaleX(sx)
+scaleY(sy)
+scale(sx, sy)
+scaleZ(sz) (3D transform)
+scale3d(sx, sy, sz)
+transform: scale(1.5);
+
+
+4. Skew: Skews(xien) an element along the X and/or Y axis.
+skewX(ax)
+skewY(ay)
+skew(ax, ay)
+transform: skewX(30deg);
+
+
+5. Perspective: Applies a perspective transform to an element.
+perspective(n)
+transform: perspective(500px) rotateY(45deg);
+Example: Animating Transformations
+Here’s an example of how to animate transformations using the @keyframes rule and the transform property:
+Ex: 
+@keyframes moveAndRotate {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    transform: translateX(100px) rotate(180deg);
+  }
+  100% {
+    transform: translateX(0) rotate(360deg);
+  }
+}
+
+.element {
+  animation: moveAndRotate 4s infinite;
+}
+In this example:
+
+The element starts at its original position with no rotation.
+At 50%, it has moved 100px to the right and rotated 180 degrees.
+At 100%, it returns to its original position with a full 360-degree rotation
+
+
+* Làm nền chéo với rotate, skew
+Ex1:
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: orange;
+  font-size: 30px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  rotate: 45deg;
+  content: '';
+  width: 100%;
+  height: 100%;
+}
+
+Ex2: 
+.section {
+  position: relative;
+}
+
+.section::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: blueviolet;
+  rotate: -70deg;
+  border-radius: 20px;
+}
+
+.hero {
+  max-width: 80%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+*Làm hiệu ứng scale giống shopee:
+.cart-btn:hover .cart-preview {
+  opacity: 1;
+  visibility: visiable;
+  scale: 1;
+}
+
+.cart-preview {
+  position: absolute;
+  top: 46px;
+  right: -8px;
+
+  display: flex;
+  align-center: center;
+  justify-content: center;
+
+  min-width: 250px;
+  min-height: 120px;
+  padding: 10px;
+  borde-radius: 3px;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+  background: #fff;
+  transform-origin: 93% top; (x y: tam scale)
+  scale: 0;
+  opacity: 0;
+  an elemen //
+  visibility hidden;
+  transition: opacity 0.5s, visibility 0.5s, scale 0.5s ;
+}
+
+*  Làm hiệu ứng cho button
+Ex1:
+.btn {
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: #fff;
+  background: #5eb9f0;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-1:hover {
+  translate: 0 -15px;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+
+Ex2:
+.btn-2 {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-2 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-2::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background: orange;
+  transition: width 0.5s ease-in-out;
+}
+
+btn-2:hover::after {
+  left: 0;
+  width: 100%;
+}
+
+*  Làm hiệu ứng cho chữ 
+<div class="text" data-texr="Lorem, ipsum dolor"> Lorem, ipsum dolor </div> 
+Ex:
+.text {
+  position: relative;
+  font-size: 30px;
+  font-weight: 600;
+  transition: color 0.5s;
+}
+.text::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+ display: flex;
+ justify-content: flex-end;
+
+  color: orange;
+  background: green;
+  overflow: hidden;
+  content: attr(data-text);
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+
+.text:hover::before {
+  width: 100%;
+  chu cha tu trai qua phai //
+  left:0;
+  right: inherit;//
+  can chu ben trai //
+  justify-content: flex-start;
+}
+
+* Hướng dẫn làm floating label
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                --primary-color: blueviolet;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+            }
+            .input-text {
+                margin: auto;
+                position: relative;
+            }
+            input {
+                outline: none;
+                font-family: inherit;
+            }
+
+            input,
+            label {
+                font-size: 14px;
+            }
+
+            .input-text input {
+                padding: 10px;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+                transition: border-color 0.5s;
+            }
+
+            .input-text label {
+                position: absolute;
+                top: 20px;
+                left: 7px;
+                padding: 0 5px;
+                translate: 0 -50%;
+                background: #fff;
+                color: #666;
+                transition: translate 0.5s;
+            }
+
+            .input-text input:focus {
+                border-color: var(--primary-color);
+            }
+
+            /* focus input -> tac dong label dang sau input (+) */
+            .input-text input:focus + label {
+                color: var(--primary-color);
+                translate: 0 -31px;
+                background: #fff;
+                /* First Shadow: -0.1px -0.1px currentcolor
+
+Horizontal offset: -0.1px (moves the shadow 0.1 pixels to the left)
+Vertical offset: -0.1px (moves the shadow 0.1 pixels up)
+Color: currentcolor (uses the current color of the text)
+Second Shadow: 0.1px 0.1px currentcolor
+
+Horizontal offset: 0.1px (moves the shadow 0.1 pixels to the right)
+Vertical offset: 0.1px (moves the shadow 0.1 pixels down)
+Color: currentcolor (uses the current color of the text) */
+                text-shadow: -0.1px -0.1px currentcolor,
+                    0.1px 0.1px currentcolor;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="input-text">
+            <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+            />
+            <label for="username"> Username</label>
+        </div>
+    </body>
+</html>
+
+
+* Loading animation 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            width: 50px;
+            height: 50px;
+          
+        }
+
+
+        .loading::before {
+            content: "";
+            border: 5px solid;
+            border-color: blue transparent;
+            border-radius: 50%;
+            animation: sniper 1s infinite;
+            position: absolute;
+            inset: 0;
+        }
+
+        .loading::after {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            translate: -50%;
+            content: 'Loading...';
+        }
+
+        @keyframes sniper {
+            from {
+                rotate: 0;
+            }
+            to {
+                rotate: 180deg;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading"></div>
+</body>
+</html>
+
+* steps in animation (sprite):
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .sticker {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 131.5px;
+                height: 131.5px;
+                background: url(https://images.viblo.asia/54edb252-47ae-4c41-8bd8-6dda83f6cd7c.png);
+                animation: run 1s infinite steps(1);
+            }
+
+            @keyframes run {
+                0% {
+                    background-position: -0px -0px;
+                }
+
+                6.25% {
+                    background-position: -131.5px -0px;
+                }
+
+                12.5% {
+                    background-position: -263px -0px;
+                }
+
+                18.75% {
+                    background-position: -394.5px -0px;
+                }
+
+                25% {
+                    background-position: -0px -131.5px;
+                }
+
+                31.25% {
+                    background-position: -131.5px -131.5px;
+                }
+
+                37.5% {
+                    background-position: -263px -131.5px;
+                }
+
+                43.75% {
+                    background-position: -394.5px -131.5px;
+                }
+
+                50% {
+                    background-position: -0px -263px;
+                }
+
+                56.25% {
+                    background-position: -131.5px -263px;
+                }
+
+                62.5% {
+                    background-position: -263px -263px;
+                }
+
+                68.75% {
+                    background-position: -394.5px -263px;
+                }
+
+                75% {
+                    background-position: -0px -394.5px;
+                }
+
+                81.25% {
+                    background-position: -131.5px -394.5px;
+                }
+
+                87.5% {
+                    background-position: -263px -394.5px;
+                }
+
+                93.75% {
+                    background-position: -394.5px -394.5px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="sticker"></div>
+        <script>
+            let width = 526;
+            let height = 526;
+            let columns = 4;
+            let rows = 4;
+
+            let steps = 16;
+
+            let x = 0;
+            let y = 0;
+
+            for (let i = 0; i < steps; i++) {
+                console.log(`
+            ${(100 / steps) * i}% {
+                background-position: -${(width / columns) * x}px -${(height / rows) * y}px;
+                }
+            `);
+
+                x++;
+
+                if ((i + 1)% 4 === 0) {
+                    y++;
+                    x = 0;
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
+* Review : 
+- the con position: fixed; error voi the cha co transform(the con bien mat)
+- giam chuyen dong:
+Ex:
+.box {
+  width: 200px;
+  height: 200px;
+  background: green;
+  animation: run 1s infinite alternate;
+}
+
+ -> performance (Adjust the appearance ...) -> turn of/on animate..
+@media (prefers-reduce-motion: reduce) {
+  .box {
+    animation: none;
+  }
+}
+
+@keyframes run {
+  from {
+    translate: 0 -50px;
+  }
+  to {
+    translate: 0 50px;
+  }
+}
+
+* Tự động phát audio và video:
+= tag audio ko co controls -> display none
+       <script>
+            // after 5 second ->auto play audio and music 
+            setTimeout(() => {
+                document.write(`
+                <audio src="./audio/music.mp3" autoplay controls></audio>
+                <video src="./video/myVideo.mp4" autoplay width="100%" controls></video>
+                `);
+            },5000);
+        </script>
+
+Ex: nguoi dung click bat ki vao trang web 
+padding-top : % -> ti le width cua the cha
+       <script>
+        document.addEventListener('click', () => {
+            const AudioTag = document.querySelector("#audio");
+            if(AudioTag) {
+                AudioTag.play();
+            }
+        }, { once: true })
+       </script>
+
+       Ex: video khung hinh 16:9 
+               <style>
+            .continer {
+                /* 16:9  => 9/16 = 56.25 %*/
+                padding-top: 56.25%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <div class="container">
+            <video src="./video/myVideo.mp4" controls width="400px"></video>
+        </div>
+    </body>
+
+* playsinline : ngan ko cho video trang vien khi su dung dt
+
+* Cach tao editor code html :
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                height: 100vh;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 10px;
+                padding: 24px;
+                height: 100%;
+            }
+
+            .editor,
+            .browser {
+                border: 2px solid #ccc;
+            }
+
+            .browser {
+                width: 100%;
+                height: 100%;   
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Code editor  -->
+            <textarea
+                name=""
+                id="editor"
+                cols="30"
+                rows="10"
+                class="editor"
+            ></textarea>
+
+            <!-- Browser  -->
+            <div>
+                <iframe
+                    src=""
+                    frameborder="0"
+                    id="browser"
+                    class="browser"
+                ></iframe>
+            </div>
+        </div>
+
+        <script>
+            const editor = document.querySelector('#editor');
+            const browser = document.querySelector('#browser');
+
+            editor.oninput = function (e) {
+                browser.srcdoc = e.target.value;
+            }
+        </script>
+    </body>
+</html>
+
+
+* Tối ưu và responsive cho hình ảnh
+1. Resolution switch : differencet size 
+
+<img 
+  srcset="
+  ./avatar-100x100.jpg 100w,
+  ./avatar-200x200.jpg 200w,
+  ./avatar-400x400.jpg 400w,
+  "
+
+  sizes="(max-width: 575px) 100px, (max-width: 991px) 200px, 400px"
+  src="./avatar-400x400.jpg"
+  alt=""
+  />
+
+  
+2. Desktop: resolution same size (dif dpi)
+<img 
+   srcset="./avatar-200x200.jpg 1x, ./avatar-400x400.jpg 2x"
+   src="./avatar-400x400.jpg"
+   alt=""
+/>
+
+3.Desktop: /img/anh1.jpg 
+  Mobile: /img/anh2.jpg
+  => focus content of picture ( Art direction) : dif device -> dif picture
+
+  <picture> 
+    <source media="(max-width: 575px)" srcset="./img-small.jpg" />
+    <img 
+        class="image"
+        src="./img-large.jpg"
+        alt=""
+    />
+
+
+
+
+*SEO 
+
+

@@ -1,0 +1,7 @@
+div {
+    display: inline-block;
+    /* background-color: tomato; */
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent blue violet red;
+}

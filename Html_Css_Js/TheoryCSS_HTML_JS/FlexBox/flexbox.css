@@ -1,0 +1,222 @@
+* {
+    padding: 0; 
+    margin: 0; 
+    box-sizing:border-box;
+}
+
+html {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Navbar  */
+.nav {
+    min-height:42px;
+    background-color: #EF5122;
+    /* director mac dinh la row : truc x nam ngang (main-axist) (item nam len 1 dong)     */
+    display:flex;
+    /* nav-list -> flex-item  */
+    justify-content: space-between;
+}
+
+.nav-list{
+    padding-left:0;
+    margin: auto 16px;
+}
+
+.nav-item{
+    color:#fff;
+    list-style:none;
+    margin:0 8px;
+    display:inline-block;
+}
+
+/* formLayout  */
+    .form {
+        padding:41px;
+        background-color:#ccc;
+    }
+.form_container {
+    background-color:#fff;
+    padding:32px;
+    max-width:720px;
+    margin: 36px auto 0 auto;
+}
+.form_row{
+    padding:8px 0;
+    /* mac dinh flex-direction: row;  -> 2 flex item (input, label) : xep hang  */
+    display:flex;
+    /* label , input -> flex-item  */
+}
+.form_input{
+    /* chiem het ko gian theo chiu main axist cua flex cha -> flex >=1 cho flex-item*/
+    flex:1;  
+    border:1px solid #ddd;
+    outline:none;
+}
+.form_label {
+    min-width:90px;
+}
+
+/* column layout  */
+.column-layout{
+    display:flex;
+    /* 3 item len hang  */
+    padding:10px 16px;
+}
+.column-item{
+    /* can width bang nhau cho 3 item  */
+    flex:1;
+    /* thay do thu tu hien thi vi tri item  */
+    order:1;
+}
+.sidebar-one{
+    flex:1;
+    order:2;
+}
+.main-column{
+    /* width gap 2 so vs item con lai  */
+    flex:3;
+    order:3;
+}
+.sidebar-two{
+    flex:1;
+}
+
+/* Feature layout  */
+.feature-layout{
+    margin-top: 36px;
+    display:flex;
+    background-color: #ccc;
+    justify-content: space-around;
+    /* xuong dong  */
+    flex-wrap: wrap;
+    flex-direction:column;
+}
+/* PC  */
+@media (min-width: 740px) {
+    .feature-layout{
+        flex-direction:row;
+    }
+}
+.feature-item{
+    padding:12px 16px;
+    margin-top: 16px;
+    /* width of a item = 30%  */
+    flex-basis:30%;
+}
+.feature-item:nth-child(1) {
+    background-color:rgb(192,227,332);
+}
+.feature-item:nth-child(2) {
+    background-color:red;
+}
+.feature-item:nth-child(3) {
+    background-color:green;
+}
+
+/* wrap layout  */
+.wrap-layout{
+    padding:10px;
+    display:flex;
+    justify-content: space-around;
+    /* len dong  */
+    flex-wrap:wrap-reverse;
+}
+.wrap-item{
+    background-color:red;
+    color:#fff;
+    margin: 10px;
+    height:100px;
+    width:100px; 
+    text-align:center;
+    line-height:100px;
+    font-size:40px;
+    font-weight:700;
+}
+/* center item  */
+.center {
+    display:flex;
+    color:#000;
+    background-color:greenyellow;
+    width:100%;
+    height:400px;
+}
+.center-item {
+    margin: auto;
+    font-weight:700;
+    font-size:40px;
+}
+
+/* chart-layout  */
+.chart-layout{
+    margin: 36px auto 0 auto;
+    padding: 32px 0;
+    height:320px;
+    background-color:#fff;
+    display:flex;
+    justify-content:space-around;
+    /* align-items:flex-end; */
+}
+.chart-layout_item{
+    /* doi truc cross axist  */
+    align-self:flex-end;
+    width:60px;
+    color:#fff;
+    text-align:center;
+    height:var(--percent);
+    background-color:#EF5122;
+    animation:growth ease-in 5s;
+}
+@keyframes growth {
+    from{
+        opacity:0;
+        /* bat dau tu 50% of percent */
+        height:calc(var(--percent) - 50%);
+    }
+    to {
+        /* to 100% percent  */
+        opacity:1;
+        height:var(--percent);
+    }
+    
+}
+/* end  */
+.the-end{
+    margin: 12px auto 48px auto;
+    padding: 32px 0;
+    max-width:740px;
+    min-height:360px;
+    display:flex;
+}
+
+.the-end_first{
+    flex:1;
+    padding:4px 16px;
+    background-color: #fff;
+    box-shadow:0 0 3px rgba(0,0,0,0.3);
+}
+
+.the-end_second {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    /* dao nguoc 2 item(y)(dao 2 diem cross-star vs cross-end) */
+    /* flex-direction:column-reverse; */
+    /* dao nguoc 2 item(x) (dao 2 diem main-star vs main-end) */
+    /* flex-direction:row-reverse  */
+}
+.the-end_second-one {
+    flex:2;
+    padding:4px 16px;
+    background-color:rgb(227,192,120);
+}
+.the-end_second-two{
+    flex:2;
+    background-color: green;
+}
+
+/* flex :1 viet tat cho flex-shrink:1,flex-grow:1,flex-basis:1; */
+
+/* flex-direction:row; */
+/* flex-wrap:wrap; */
+/* ->flex-flow:row wrap  */

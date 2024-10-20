@@ -1,0 +1,593 @@
+/* Noti badge(chuong thong bao  */
+/* body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    height: 100vh;
+}
+
+.noti {
+    position: relative;
+    font-size: 50px;
+}
+.note{
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background-color: red;
+    color: #fff;
+    padding: 4px;
+    border-radius: 50%;
+    font-size: 14px;
+} */
+
+
+/* Menu da cap  */
+/* <body>
+  <ul class="menu">
+    <li><a href="">HOME</a></li>
+    <li><a href="">COURSES</a>
+     <ul class="sub-menu">
+      <li><a href="">Item1</a></li>
+      <li><a href="">Item2</a></li>
+      <li><a href="">Item3</a></li>
+     </ul>
+    </li>
+    <li><a href="">EVENTS</a></li>
+  </ul>
+</body> */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, san-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Sefoe UI Symbol';
+     background-color: #333;
+}   */
+
+/*
+.menu > li {
+    position: relative;
+    display: inline-block;
+    margin: 0 12px;
+    padding-bottom: 12px;
+}
+
+.menu > li:hover .sub-menu {
+    display: block;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.sub-menu{
+    position: absolute;
+    top: 32px;
+    left: -12px;
+    width: 140px;
+    background: #fff;
+    list-style-type: none;
+    display: none;
+}
+
+.sub-menu a {
+    display: block; 
+    padding: 8px 16px; 
+    border-bottom: 1px solid #ccc;
+    color: #333;
+}
+
+.sub-menu li:hover {
+    background-color: #ddd;
+} */
+
+/* Làm Mega Menu */
+/* <div class="menu">
+  <!-- item 1  -->
+  <div class="menu-item">
+    <a href="">Home page</a>
+    <div class="sub-menu">
+      <h3>Lorem ipsum dolor sit ?</h3>
+      <p>Home ipsum dolor, sit amet consectetur adipisicing elit. Repellat doloribus perspiciatis porro ipsum voluptates ex cupiditate rem quos unde numquam!</p>
+    </div>
+  </div>
+
+  <!-- item 2  -->
+  <div class="menu-item">
+    <a href="">Products</a>
+    <div class="sub-menu">
+      <h3>Lorem ipsum dolor sit ?</h3>
+      <p>Products ipsum dolor, sit amet consectetur adipisicing elit. Repellat doloribus perspiciatis porro ipsum voluptates ex cupiditate rem quos unde numquam!</p>
+    </div>
+  </div>
+   
+  <!-- item 3  -->
+  <div class="menu-item">
+    <a href="">Menu</a>
+    <div class="sub-menu">
+      <h3>Menu ipsum dolor sit ?</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat doloribus perspiciatis porro ipsum voluptates ex cupiditate rem quos unde numquam!</p>
+    </div>
+  </div>
+</div> */
+/* 
+.menu {
+    position: relative;
+    background: #fff;
+}
+
+.menu a { 
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 20px 16px;
+}
+
+.menu-item{
+    display: inline-block;
+}
+
+.menu-item:hover .sub-menu {
+    display: block;
+}
+
+.sub-menu{
+    position: absolute;
+    background-color: #ddd;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: none;
+}
+
+.sub-menu h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sub-menu p{
+    margin-top: 16px;
+} */
+
+
+
+
+/* Làm Modal Image(do bong mo background)*/ 
+
+/* <div class="content">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ipsa, ad possimus atque esse enim laboriosam maiores minus, voluptas odio in facilis nobis aliquam voluptates beatae aut neque alias exercitationem dolorem nostrum asperiores nisi? Est, magnam minima, sit, suscipit ea vel corrupti earum maiores animi eveniet itaque voluptate possimus tempore ratione voluptatum inventore consequatur cum. Enim hic necessitatibus temporibus eum earum fuga nihil deleniti, quos iusto nisi totam ratione aut, quas blanditiis dolore voluptate facilis quia magnam facere impedit dicta. Sed cum quas explicabo ipsa, porro aliquid excepturi eveniet tempora, nesciunt fuga voluptates dolorem mollitia vel ea dolores natus, minima suscipit blanditiis! Enim modi nemo quos cumque, necessitatibus, animi sed mollitia, consectetur quam deserunt quia reprehenderit voluptatum impedit! Mollitia iure beatae cumque rem dignissimos. Maxime, iusto doloribus? Ipsa vero obcaecati explicabo. Doloremque atque sint voluptates vel eveniet aliquam. Provident, veritatis possimus maiores enim architecto quos deleniti qui sit? Asperiores non dignissimos quisquam rem doloribus fugiat molestiae voluptas facere animi itaque libero soluta quia exercitationem esse odio numquam eaque corrupti distinctio repellendus veritatis doloremque nemo, iure illum unde. Repellendus modi in nam quod ipsam id veniam omnis quam quis accusamus, inventore ab numquam quidem ad earum rem deleniti dicta nulla aperiam impedit officiis! Suscipit excepturi, eveniet minus accusantium, temporibus voluptatibus dolorem iste illo deleniti enim cupiditate. Est, placeat animi expedita, cupiditate sapiente voluptatum eligendi inventore molestias facere nihil odio voluptatibus soluta eaque harum tempore. Laboriosam deleniti iste totam architecto perspiciatis reprehenderit magni consectetur vel dolorum incidunt voluptate animi exercitationem autem, aut quidem blanditiis fugit necessitatibus a officiis maxime mollitia. Id accusamus nam cum. Iusto, ipsa. Aut eaque recusandae maxime pariatur incidunt enim ipsam necessitatibus, illum ut tempora. Deleniti assumenda suscipit architecto deserunt veritatis laborum fugiat voluptatum, cumque nisi, doloremque, nulla rem beatae consequuntur numquam delectus commodi? Voluptatem quibusdam ducimus nisi unde quaerat ex at esse facilis nemo quisquam possimus illo libero necessitatibus, eligendi blanditiis eaque recusandae. Quod nostrum itaque optio unde eveniet vel qui odit, obcaecati magnam at eum deserunt assumenda sint sed aliquid illum accusantium minus ullam ad id temporibus ipsa? Ullam asperiores eum expedita quaerat aliquam, provident pariatur. Et ipsam aliquid cum accusamus quaerat repellat, pariatur, voluptas architecto commodi corporis explicabo voluptatibus alias impedit assumenda illo iusto. Aut alias ratione fugiat vitae assumenda eaque quasi labore quo? Minus aliquid nemo perferendis ducimus sequi vel consequatur consequuntur nesciunt odit! Corporis facilis earum optio eius consequatur quos perferendis ullam fugit eligendi. Amet perferendis dolores et doloribus, illo iste aut assumenda laudantium neque totam ducimus recusandae tenetur ex! Harum animi nihil ex obcaecati quos accusantium corporis atque perspiciatis dolore, consectetur laudantium reprehenderit aut ullam fuga, veniam quod facere quam sapiente adipisci asperiores consequuntur deserunt. Deserunt repellat molestiae laudantium exercitationem! Quibusdam modi debitis labore delectus reiciendis aliquid fugit mollitia sed nesciunt est eius possimus dolore aperiam minus cupiditate doloribus officiis nihil doloremque vero dolorem dolorum autem, enim aut! Voluptas in vero fuga quasi officiis repellendus cumque quaerat veniam consequatur iusto soluta officia asperiores facere rem tempora dolorem deleniti, cupiditate laborum laudantium, sint quis.</p>
+  </div>
+  <div class="modal">
+    <div class="body">
+      <button class="close-btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <a href="">
+        <img src="https://plus.unsplash.com/premium_photo-1686741733157-1d7863a7a04e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8" alt="">
+      </a>
+    </div>
+  </div> */
+
+/* .modal {
+    position: fixed; */
+    /* the con can giua -> margin auto  */
+    /* display: flex;
+    background-color: rgba(0,0,0,0.2);
+    inset: 0;
+}
+
+.modal .body{
+    position: relative;
+    margin: auto;
+    width: 440px;
+}
+
+.modal .body img{
+    width: 100%;
+}
+.modal .close-btn { */
+    /* Neu la btn la the a
+     display: flex;
+    margin: auto; */
+    /* position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24px;
+    height: 32px; */
+    /* bo goc -> hinh tron neu box la hinh vuong co size  */
+    /* border-radius: 50%;
+    border: none;
+    background: #ebebeb;
+    color: #666;
+    width: 32px;
+    height: 32px;
+    cursor:pointer;
+} */
+
+/* Position sticky  */
+/* h2 {
+    background-color: orange;
+    position: sticky;
+    top: 0;
+}
+
+.chapter {
+    background: #ccc;
+    height: 500px; */
+    /* khi content trong the con vuot qua the cha(chapter) -> auto   */
+    /* overflow: auto;
+    margin: 300px;
+} */
+
+/* Exmple Before: Dau gach tren dau the tieu de  */
+/* <div class="heading">
+  <h1>Heading</h1>
+</div> */
+
+/*
+.heading{
+    position: relative;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.heading::before{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    content:"";
+    width: 30px;
+    height: 3px;
+    background: #333;
+}             */
+
+
+/* Exmple After: Dau gach tren dau the tieu de  */
+/* .heading{
+    position: relative;
+    font-size: 20px;
+    margin-top: 50px;
+    text-align: center;
+    display: inline-block;
+}
+
+.heading::before{
+    content: "";
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: orange;
+    left: -8px;
+}
+
+.heading::after{
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    display: inline-block;
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: #333;
+} */
+/* .heading::before{ */
+    /* content: ""; */
+    /* tu can chinh theo toan do chinh no  */
+    /* position: relative;
+    top: -10px;
+    margin-right: 12px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: orange;
+}
+*/
+/* scroll tt  */
+/* 
+
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, .06);
+}
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+} */
+
+/* Example Mix-blend-mode */
+/* 
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    position: relative;
+    width: 100px;
+    height: 300px;
+    border: 3px dashed #333;
+    margin: 0 auto;
+}
+
+.result {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    background: #000;
+    mix-blend-mode: difference;
+}
+
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #A174FF;
+    margin-left: 20px;
+}
+
+img {
+    width: 200px;
+} */
+
+/* <body>
+  <div class="box">
+    <!-- layer 1 -->
+    <div class="result">
+      <div class="circle"></div>
+    </div>
+
+    <!-- layer 2  -->
+      <img src="https://th.bing.com/th/id/OIP.qv1lj-q_wX4yIbz19Q1qwQHaKX?rs=1&pid=ImgDetMain" alt="">
+  </div>
+</body> */
+
+
+/* CSS counter  */
+/* 
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    padding: 10px;
+} */
+
+/* tang bien heading & reset sub-heading = 0 neu gap h2 tag  */
+
+/* h2 {
+    counter-increment: heading;
+    counter-reset: sub-heading;
+}
+
+h2::before {
+    content: counter(heading) " - "
+}
+
+h3 {
+    counter-increment: sub-heading;
+}
+
+h3::before {
+    content: counter(heading) "." counter(sub-heading) " - "
+}
+ */
+ /* <div class="content">
+ <h1>Lorem ipsum dolor sit amet.</h1>
+ <h2>Lorem ipsum dolor sit amet.</h2>
+ <h3>Lorem ipsum dolor sit amet.</h3>
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quaerat tenetur, iure cupiditate esse ipsam tempora eum aspernatur, pariatur fugit delectus perferendis ut, illum inventore magni similique! Modi magni facere sint consequuntur doloremque, dignissimos illum odio placeat pariatur? Eius, odio. Natus laborum doloribus blanditiis voluptatem corrupti quibusdam pariatur possimus reprehenderit?</p>
+
+ <h3>Lorem ipsum dolor sit amet.</h3>
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quaerat tenetur, iure cupiditate esse ipsam tempora eum aspernatur, pariatur fugit delectus perferendis ut, illum inventore magni similique! Modi magni facere sint consequuntur doloremque, dignissimos illum odio placeat pariatur? Eius, odio. Natus laborum doloribus blanditiis voluptatem corrupti quibusdam pariatur possimus reprehenderit?</p>
+
+   <h2>Lorem ipsum dolor sit amet.</h2>
+ <h3>Lorem ipsum dolor sit amet.</h3>
+
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quaerat tenetur, iure cupiditate esse ipsam tempora eum aspernatur, pariatur fugit delectus perferendis ut, illum inventore magni similique! Modi magni facere sint consequuntur doloremque, dignissimos illum odio placeat pariatur? Eius, odio. Natus laborum doloribus blanditiis voluptatem corrupti quibusdam pariatur possimus reprehenderit?</p>
+
+   <h2>Lorem ipsum dolor sit amet.</h2>
+ <h3>Lorem ipsum dolor sit amet.</h3>
+
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quaerat tenetur, iure cupiditate esse ipsam tempora eum aspernatur, pariatur fugit delectus perferendis ut, illum inventore magni similique! Modi magni facere sint consequuntur doloremque, dignissimos illum odio placeat pariatur? Eius, odio. Natus laborum doloribus blanditiis voluptatem corrupti quibusdam pariatur possimus reprehenderit?</p>
+</div> */
+
+/* clip-path  */
+/* :root {
+    --box: blue;
+}
+
+ .box {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto 0;
+    background: var(--box);
+    clip-path: polygon(0 0,100% 0,100% 100%,50% 88%,0 100%);
+    border-radius: 10px 10px 0 0;
+ } */
+
+ /* Flex Box  */
+ /* E1/ */
+ /* <div class="nav">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="">Item</a></li>
+      <li class="nav-item"><a href="">Item</a></li>
+      <li class="nav-item"><a href="">Item</a></li>
+    </ul>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="">Item</a></li>
+      <li class="nav-item"><a href="">Item</a></li>
+    </ul> */
+/* body {
+    font-size: 1.6rem;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.5;
+    background-color: #fff;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    height: 54px;
+    background-color: blue;
+    background-image: linear-gradient(160deg,#0093e9 0% #80d0c7 100%);
+}
+
+.nav-list {
+    margin: auto 16px;
+    padding-left: 0;
+}
+
+.nav-item {
+    display: inline-block;
+    margin: 0 8px;
+    list-style: none;
+}
+
+.nav-item a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.6rem;
+} */
+
+
+/* E2 /  */
+/* <div class="form-container">
+<form action="" class="form">
+  <div class="row">
+    <label for="username" class="label">Ten dang nhap:</label>
+    <input type="text" id="username">
+  </div>
+  <div class="row">
+    <label for="password" class="label">Mat khau:</label>
+    <input type="password" id="password">
+  </div>
+</form>
+</div> */
+/* .form-container {
+    display: flex;
+    max-width: 720px;
+    margin: 36px auto 0 auto;
+    padding: 32px;
+    border-radius: 16px;
+    background-color: #fff;
+}
+.form-container .row {
+    display: flex;
+    padding: 8px 0;
+    align-items: center;
+    
+}
+.form-container .label{
+    min-width: 80px;
+    font-weight: 500;
+}
+.form-container .input{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+} */
+
+/* E3  */
+/* <div class="column-layout">
+<div class="column-item sidebar-one">
+  <h2>Sidebar one</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eligendi adipisci sapiente quo laborum hic voluptate, harum magni quidem illo vitae dolorum laudantium minima at, expedita natus? Quas, dolore eligendi quam fuga odio iure voluptatem ipsam repudiandae minus. Nihil corrupti libero tempora error quibusdam excepturi iure sint expedita ipsum ea.</p>
+</div>
+<div class="column-item main-column">
+  <h2>Sidebar one</h2>
+
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur ex accusamus, similique ab incidunt minus alias repellat nobis corrupti voluptate iusto non quas inventore doloremque dolores molestias voluptatibus repellendus beatae fuga fugiat! Soluta repellendus et rerum natus a ad consequuntur quisquam nobis inventore illum? Dolore corrupti fugit optio omnis atque.</p>
+</div>
+<div class="column-item sidebar-two">
+  <h2>Sidebar one</h2>
+
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur ex accusamus, similique ab incidunt minus alias repellat nobis corrupti voluptate iusto non quas inventore doloremque dolores molestias voluptatibus repellendus beatae fuga fugiat! Soluta repellendus et rerum natus a ad consequuntur quisquam nobis inventore illum? Dolore corrupti fugit optio omnis atque.</p>
+</div>
+</div> */
+/* .column-layout {
+    display: flex;
+    margin-top: 36px;
+    padding: 12px 0;
+    background-color: #fff;
+} 
+.column-item {
+    padding: 0 16px;
+}
+.sidebar-one {
+    flex:1;
+}
+.main-column {
+    flex: 3; /*  lon gap 3 lan side bar one */
+/* }
+.sidebar-two {
+    flex: 1;
+} */ 
+
+/* E3 / */
+
+/* .wrap-layout-2 {
+    --column:3;
+    --spacing:8px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--spacing));
+    margin-top: 36px;
+    padding: 32px 0;
+    background-color: #fff;
+}
+
+.wrap-layout-2 .item{
+    width: calc(100% / var(--column) - var(--spacing));
+    height: 90px;
+    margin-left: var(--spacing);
+    margin-top: var(--spacing);
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 90px;
+    text-align: center;
+    background-color: aquamarine;
+} */
+
+

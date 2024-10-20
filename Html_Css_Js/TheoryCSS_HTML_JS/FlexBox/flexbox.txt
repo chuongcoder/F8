@@ -1,0 +1,31 @@
+.form_container {
+    background-color: #ccc;
+    height:300px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.form {
+    min-width:70%;
+    height:80%;
+    padding:10px;
+    background-color:#fff;
+    display:flex;
+    /* cang chinh theo y ( con -> 2 div form row)  */
+    justify-content:center;
+    /* flex-direction: column; */
+}
+
+
+.form_row{
+    border: 1px solid #ddd;
+    padding:8px 12px;
+    display:flex;   
+    /* che do layout flex tren 1 hang  */
+    /* display:inline-flex; */
+}
+.form_input{
+    border:1px solid #ddd;
+    outline:none;   
+    /* width:100%; */
+}

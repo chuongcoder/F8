@@ -1,0 +1,24 @@
+// .header {
+//     height: $header-height;
+//     background: green;
+// }
+
+
+// @use "../base/variables";
+// @use "../base/mixins";
+
+// // muon truy cap dara -> thong qua name-space (mixins, variable || var(doi ten namespace))
+// .header {
+//     @include mixins.flexCenter;
+//     height: variables.$header-height;
+//     // background: green;
+// }
+
+// Ex: forward from index 
+@use "../base";
+
+.header {
+    @include base.flexCenter;
+    height: base.$header-height;
+    background: green;
+}

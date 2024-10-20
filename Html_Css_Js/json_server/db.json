@@ -1,0 +1,9 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Minh Chuong",
+      "description": "Hello World"
+    }
+  ]
+}

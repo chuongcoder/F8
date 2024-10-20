@@ -1,0 +1,9 @@
+@use "../abstracts";
+
+.btn {
+    padding: 10px 20px;
+
+    &--primary {
+        background: abstracts.$primary-color;
+    }
+}

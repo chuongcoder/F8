@@ -1,0 +1,152 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+}
+
+
+body {
+    position:fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+}
+
+
+body > div {
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+}
+
+#toast {
+    position:fixed;
+    top: 32px;
+    right: 32px;
+}
+
+.toast{
+    display:flex;
+    align-items:center;
+    background-color:#fff;
+    border-radius:2px;
+    padding:20px 0;
+    border-left:4px solid;
+    box-shadow:0 5px 8px rgba(0,0,0,0.08);  
+    min-width: 400px;
+    max-width:450px;
+    transition:all linear 0.3s;
+    /* transform:translateX(calc(100% + 32px)); */
+    /* 3s -> time delay  */
+    /* diem cuoi animation : mac dinh hien len trang thai ban dau  */
+    /* forwards: dung diem cuoi animation  */
+    /* run animation -> quay ve trang thai ban dau -> hien len(forwards -> bo trang thai nay -> an luon ) */
+}
+
+@keyframes slideInleft {
+    from {
+        opacity:0;
+        transform:translateX(calc(100% + 32px));
+    }
+    to {
+        opacity:1;
+        transform: translateX(0);
+    }
+}
+@keyframes fadeOut {
+    to {
+        opacity:0;
+    }
+
+}
+/* css cho all div toast sau div toast dau tien  */
+.toast + .toast {
+    margin-top: 24px;
+}
+.toast__icon {
+    font-size:24px;
+}
+.toast__icon,
+.toast__close {
+    padding:0 16px;
+}
+.toast__body {
+    /* day icon X ra ben phai neu content ngan  */
+    flex-grow: 1;
+}
+.toast__title {
+    font-size:16px;
+    font-weight:600;
+    color:#333;
+}
+.toast__msg {
+    font-size:14px;
+    color:#888;
+    line-height:1.5;
+    margin-top: 6px;
+}
+.toast__close {
+    cursor:pointer;
+    font-size:20px;
+    color:rgba(0,0,0,0.3);
+}
+
+/* block--modifier  */
+.toast--info {
+    border-color:aqua;
+}
+.toast--info .toast__icon {
+    color:aqua;
+}
+
+.toast--success {
+    border-color:limegreen;
+}
+.toast--success .toast__icon {
+    color:lightgreen;
+}
+
+.toast--error {
+    border-color:lightcoral;
+}
+.toast--error .toast__icon {
+    color:lightcoral;
+}
+
+/* btn  */
+body > .btn {
+    margin:auto;
+    display:flex;
+    flex-direction:row;
+}
+
+.btn {
+    display:inline-block;
+    text-decoration:none;   
+    background-color: transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    border-radius:50px;
+    padding:12px 48px;
+    /* trang thai khi hover  */
+    transition: opacity 0.2s ease; 
+}
+.btn + .btn {
+    margin-left:16px;
+}
+
+.btn:hover {
+    cursor:pointer;
+    opacity:0.8;
+}
+.btn--success{
+    background-color: green;
+}
+
+.btn--danger{
+    background-color:red;
+}

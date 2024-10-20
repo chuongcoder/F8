@@ -1,0 +1,500 @@
+sass -h  : more info about sass
+* Init project with sass :
+folder_Project > folder_scss + folder_assets(*)
+
+(*) : open gitbash (stand at folder project) 
+- initial assets folder: sass scss/main.scss assets/css/main.css
+- auto convert scss file code to css code: sass scss:assets/css -w 
+- auto conect with npm : npm init -> enter... -> "start" : "sass scss:assets/css -w" (script) 
+=> npm start : auto convert to css code
+
+
+
+1. Variables:
+Ex:
+$primary-color: #333;
+
+body {
+  color: $primary-color;
+}
+
+2. Nesting:
+Ex:
+nav {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  
+    li { display: inline-block; }
+  
+    a {
+      text-decoration: none;
+      color: $primary-color;
+    }
+  }
+  
+
+3 Extend & Placeholder variable: 
+// I. Extend:
+// Lệnh @extend được sử dụng để kế thừa các thuộc tính CSS từ một selector khác.
+// II. Placeholder selector
+// Placeholder selector (được định nghĩa bằng %) cũng giống như các selector thông thường,
+// nhưng chúng không xuất hiện trong CSS cuối cùng trừ khi được mở rộng bởi @extend.
+//  Điều này giúp giữ cho CSS gọn gàng và tránh việc tạo ra các class không cần thiết trong file CSS.
+
+Ex:
+// Neu khong dung extend :  => nhieu class
+// .btn-base, .btn-info, .btn-danger,.. {
+//     // code css
+// }
+
+* Dung extend :
+// btn-base {
+//     padding: 12px 20px;
+//     border: none;
+//     border-radius: 8px;
+
+//     color: #fff;
+//     background: $primary-color;
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+
+// .btn-primary {
+//     @extend .btn-base;
+//     background: $primary-color;
+// }
+
+// .btn-secondary {
+//     @extend .btn-base;
+//     background: $secondary-color;
+// }
+
+* Dung place holder : %name_selector => ko xh trong code css neu dc dung -> giam data cho file css
+// %btn-base {
+//     padding: 12px 20px;
+//     border: none;
+//     border-radius: 8px;
+
+//     color: #fff;
+//     background: $primary-color;
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+
+4. Mixin => giam thieu code , reuse code scss 
+Ex:
+// Định nghĩa mixin cho border-radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Định nghĩa mixin cho box-shadow với giá trị mặc định
+@mixin box-shadow($x: 0px, $y: 4px, $blur: 5px, $color: rgba(0, 0, 0, 0.3)) {
+  -webkit-box-shadow: $x $y $blur $color;
+          box-shadow: $x $y $blur $color;
+}
+
+// Sử dụng mixin trong các lớp CSS
+.button {
+  @include border-radius(10px);
+  @include box-shadow;
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+// Định nghĩa mixin với nội dung động
+@mixin hover-effect {
+  &:hover {
+    @content;
+  }
+}
+
+// Sử dụng mixin với nội dung động
+.button {
+  @include hover-effect {
+    background-color: darken(blue, 10%);
+  }
+}
+
+5. If, media, mixin 
+Ex: 
+.container {
+  @media (max-width:__) {
+    code //
+  }
+}
+
+Ex: Tong quat cho responisve cho phan tu container ( class = list)
+// Ex: su dung mixin, media , content => responsive
+// @mixin grid($column, $spacing) {
+//     // bien noi suy 
+//     --column: #{$column};
+//     --spacing: #{$spacing};
+
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: var(--spacing);
+//     margin-left: calc(-1 * var(--spacing));
+
+//     // focus tat ca con truc tiep cua the cha
+//     > * {
+//         width: calc(100% / var(--column) - var(--spacing));
+//         margin-left: var(--spacing);
+//     }
+// }
+
+// // responsive use mixin and content 
+// @mixin screen($device) {
+//     @if $device == tablet {
+//         @media (max-width: 991.98px) {
+//             @content;
+//         }
+//     } @else if $device == mobile {
+//         @media (max-width: 575.98px) {
+//             @content;
+//         }
+//     } @else {
+//         @warn "Error";
+//     }
+// }
+
+// .list {
+//     @include grid(4, 30px);
+//     @include screen(tablet) {
+//         --column: 2;
+//         --spacing: 20px;
+//     }
+
+//     @include screen(mobile) {
+//         --column: 1;
+//         --spacing: 10px;
+//     }
+
+//     .item {
+//         background: green;
+
+//         font: {
+//             weight: 600;
+//             size: 20px;
+//         }
+//     }
+// }
+
+
+
+6.Sử dụng @use và @forward thay cho @import
+@use path/.../namespace
+
+h1 {
+  color: namespace.variable;
+}
+
+
+Ex:
+file var.scss 
+$height : 100px;
+
+file main.scss 
+@use ../base/var;
+
+h1 {
+  color: var.$height;
+}
+
+
+// @use ../base/var as va;
+=> color: va.$height;
+
+
+// @use ../base/var as *;
+=> color: $height;
+
+7. Partial : _name.scss (separate to more file details)
+
+8 Other value in sass:
+- debug:
+@debug name_var;
+Ex: @debug $variable;
+
+-number:
+$num: 20px;
+
+-strings: 
+$device: "mobile"
+
+-color:
+$color: green;
+$secondary: rgba{
+  $color: $primary,
+  $alpha: 0.5,
+};
+h2 {
+  color: $secondary;
+}
+=> css: 
+h2 {
+  color: rgba(0,128,0,0.5);
+}
+
+- list:
+$color: red orange;
+$list: 1 2 3 orange red;
+
+-maps:
+$break-points: (
+  'mobile': 575px,
+  'tablet': 768px,
+);
+
+-boolean
+$success: true;
+
+Ex: 
+@mixin avatar ($w, $h, $circle) {
+  width: $w;
+  height: $h;
+
+  @if $circle == true {
+    border-radius: 50%;
+  }
+}
+
+img.avatar {
+  @include avatar(100px, 100px, true);
+}
+
+- null 
+@mixin flexCenter ($horizontal: center, $vertical: center) {
+  display: flex;
+  align-item: $vertical;
+  justify-content: $horizontal;
+}
+
+.box {
+  @include flexCenter($horizontal: null);
+}
+
+=> css: 
+.box {
+    display: flex;
+    align-items: center;
+}
+
+9.Sử dụng toán tử và nội suy trong Sass
+
+- toán tử :
+Cộng (+)
+$width: 100px + 50px; // Kết quả: 150px
+Trừ (-)
+$height: 100px - 20px; // Kết quả: 80px
+Nhân (*)
+$area: 10px * 5; // Kết quả: 50px
+Chia (/)
+$font-size: 20px / 2; // Kết quả: 10px
+Toán tử so sánh
+Lớn hơn (>)
+$is-larger: 10px > 5px; // Kết quả: true
+Nhỏ hơn (<)
+$is-smaller: 5px < 10px; // Kết quả: true
+Lớn hơn hoặc bằng (>=)
+$is-greater-or-equal: 10px >= 10px; // Kết quả: true
+Nhỏ hơn hoặc bằng (<=)
+$is-less-or-equal: 10px <= 10px; // Kết quả: true
+Bằng (==)
+$is-equal: 10px == 10px; // Kết quả: true
+Khác (!=)
+$is-not-equal: 10px != 5px; // Kết quả: true
+Toán tử logic
+Và (and)
+$is-true: true and false; // Kết quả: false
+Hoặc (or)
+$is-true: true or false; // Kết quả: true
+Phủ định (not)
+$is-false: not true; // Kết quả: false
+Toán tử chuỗi
+Chuỗi hóa (string interpolation)
+$name: world;
+$greeting: "Hello, #{$name}!"; // Kết quả: "Hello, world!"
+Cộng chuỗi (+)
+$full-string: "Hello, " + "world!"; // Kết quả: "Hello, world!"
+
+* Sử dụng toán tử trong mixin và function
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+.box {
+  @include size(100px + 20px, 200px - 50px); // width: 120px; height: 150px;
+}
+
+@function double($number) {
+  @return $number * 2;
+}
+
+.double-width {
+  width: double(50px); // Kết quả: 100px
+}
+
+
+- nội suy :Phép nội suy trong Sass (string interpolation) cho phép bạn chèn các giá trị 
+biến hoặc kết quả của các biểu thức vào bên trong chuỗi hoặc tên CSS. '#{}'
+
++ Nội suy trong chuỗi
+Ex:
+$name: world;
+$greeting: "Hello, #{$name}!"; // Kết quả: "Hello, world!"
+
++ Nội suy trong tên lớp
+$feature: "flex";
+.#{$feature}-container {
+  display: flex;
+}
+
++ Nội suy trong thuộc tính CSS
+Ex: 
+ $selector: ".container";
+ #{$selector} {
+  ưidth: 100px;
+}
+
+Ex2: $selector: ".container";
+$property: "display";
+$placement: "left";
+
+#{$selector} {
+  #{$property}: flex;
+  margin-#{$placement}: 100px;
+}
+
++ Nội suy trong hàm
+Ex:
+@function generate-class ($name,$value) {
+  @return ".#{$name}-#{$value}";
+}
+
+.class-name {
+  content: generate-class("btn","primary"); // Kết quả: ".btn-primary"
+}
+
+
++ Nội suy trong mixin
+@mixin size($property, $value) {
+  .#{$property} {
+    #{$property}: $value;
+  }
+}
+
+@include size(width, 100px);
+
++ vi du thuc te: thiet lap mau nen dua tren danh sach mau 
+
+$colors : (
+  primary: #3498db,
+  success: #74c3c
+);
+
+@each $name, $color in $colors {
+  .btn-#{$name} {
+    background-color: $color;
+  }
+}
+
+css:
+.bg-primary {
+  background-color: #3498db;
+}
+
+.bg-success {
+  background-color: #2ecc71;
+}
+
++ Nội suy trong thuộc tính động
+Ex:
+
+$properties : (width, height);
+$value: 10px;
+
+@each propertie in $properties {
+  .#{$propertie} {
+    #{$propertie} : $value;
+  }
+}
+
+css:
+.width {
+  width: 10px;
+}
+
+.height {
+  height: 10px;
+}
+
+10. if else, each, for 
+Ex: if else
+$condition: 10 == 10
+
+h1 {
+  @if $condition {
+    color: green;
+  }
+  else {
+    color: red;
+  }
+}
+
+or 
+
+h1 {
+  color: if($condition, green, red);
+}
+
+Ex: each 
+
+$break-points: 575px 1170x;
+
+@each $break-point in $break-points {
+  @media (min-width: #{$break-point}) {
+    .test {
+      color: red;
+    }
+  }
+}
+
+$break-points: (
+  "sm": 575px,
+  "md": 768px,
+  "lg": 991px,
+  "xl": 1140px,
+  "xxl": 1320px
+)
+
+@each $infix, $break-point in $break-points {
+  @media (min-widthL #{$break-point}) {
+    .col-#{$infix} {
+      color: red;
+    }
+  }
+}
+
+Ex: for 
+@for $i from 1 to/through 10 {
+  @debug $i;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    --column-number: #{$i};
+  }
+}
+
+
+*  Ứng dụng Sass xây dựng Grid system:

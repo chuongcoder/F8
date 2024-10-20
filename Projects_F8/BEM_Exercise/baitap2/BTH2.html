@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM2</title>
+    <link rel="stylesheet" href="./BTH2.css">
+    <link rel="stylesheet" href="../themify-icons/themify-icons.css">
+</head>
+
+<body>
+    <div id="toast">
+        <!-- success  -->
+        <!-- <div class="toast toast--success">
+
+        </div> -->
+    </div>
+    <div class="btn">
+        <div onclick="showSuccessToast();" class="btn btn--success">Show success</div>
+        <div onclick="showErrorToast();" class="btn btn--danger">Show error toast</div>
+    </div>
+
+    <script>
+        function toast(
+            { title = '',
+                message = '',
+                type = 'info',
+                duration = 3000 }
+        ) {
+            const main = document.getElementById('toast');
+            if (main) {
+                const toast = document.createElement('div');
+                setTimeout(function(){
+                        main.removeChild(toast);
+                    },duration + 1000)
+
+                toast.onclick = function(event){
+                    if(event.target.closest('.toast__close')) {
+                        main.removeChild(toast)
+                    }
+                }
+                const icons = {
+                    success: 'ti-check',
+                    error: 'ti-close',
+                };
+                const icon = icons[type];
+                const delay = (duration/1000).toFixed(2);
+                toast.classList.add('toast',`toast--${type}`);
+                toast.style.animation = `slideInleft ease .3s ,fadeOut linear 1s ${delay}s forwards`
+                toast.innerHTML = `
+            <div class="toast__icon">
+                <i class="${icon}"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">${title}</h3>
+                <p class="toast__msg">${message}</p>
+            </div>
+            <div class="toast__close">
+                <i class="ti-close"></i>
+            </div>
+                    `;
+                    main.appendChild(toast);
+
+
+            }
+        }
+        toast({
+            title: 'Success',
+            message: 'Hoc f8 de lam de hieu de hoc de thanh cong !!!!!!!!!!!!!!!!!!!!!',
+            type: 'error',
+            duration: 3000
+        });
+
+        function showErrorToast() {
+            toast({
+            title: 'Success',
+            message: 'Thanh cong',
+            type: 'error',
+            duration: 5000
+        });  
+        }
+        function showSuccessToast() {
+            toast({
+            title: 'Success',
+            message: 'That bai',
+            type: 'success',
+            duration: 5000
+        });
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- info  -->
+<!-- <div class="toast toast--info">
+            <div class="toast__icon">
+                <i class="ti-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Info</h3>
+                <p class="toast__msg">Hoc f8 de lam de hieu de hoc de thanh cong !!!!!!!!!!!!!!!!!!!!! </p>
+            </div>
+            <div class="toast__close">
+                <i class="ti-close"></i>
+            </div>
+        </div> -->
+<!-- error  -->
+<!-- <div class="toast toast--error">
+            <div class="toast__icon">
+                <i class="ti-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Error</h3>
+                <p class="toast__msg">Hoc f8 de lam de hieu de hoc de thanh cong !!!!!!!!!!!!!!!!!!!!!</p>
+            </div>
+            <div class="toast__close">
+                <i class="ti-close"></i>
+            </div>
+        </div> -->

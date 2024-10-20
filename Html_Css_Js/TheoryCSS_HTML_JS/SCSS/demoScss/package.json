@@ -1,0 +1,15 @@
+{
+  "name": "chuongcoder",
+  "version": "1.0.0",
+  "description": "FirstDemoScSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "HelloWorldSCSS",
+    "start": "sass scss:assets/css -w"
+  },
+  "keywords": [
+    "Code"
+  ],
+  "author": "Chuong",
+  "license": "ISC"
+}

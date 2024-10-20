@@ -1,0 +1,433 @@
+// $primary-color: red;
+
+// *,
+// ::before,
+// ::after {
+//     box-sizing: border-box;
+// }
+
+// .container {
+//     min-width: 1170px;
+// }
+
+// vd1
+// .card {
+//     width: 300px;
+//     padding: 20px;
+//     bottom: 2px solid #ccc;
+//     border-radius: 8px;
+
+//     .thumb {
+//         width: 100%;
+//     }
+
+//     .title {
+//         font-size: 22px;
+
+//         strong {
+//             color: green;
+//         }
+//     }
+
+//     .desc {
+//         font-size: 18px;
+//     }
+
+//     .btn-link {
+//         color: #666;
+//     }
+// }
+
+// vd 2
+// .card {
+//     width: 300px;
+//     padding: 20px;
+//     bottom: 2px solid #ccc;
+//     border-radius: 8px;
+
+// &: parent = card
+//     &-thumb {
+//         width: 100%;
+//     }
+
+//     &-title {
+//         font-size: 22px;
+
+//         strong {
+//             color: green;
+//         }
+//     }
+
+//     .&-desc {
+//         font-size: 18px;
+//     }
+
+//     &-btn-link {
+//         color: #666;
+//     }
+// }
+
+// vd 3
+// .card {
+//     width: 300px;
+//     padding: 20px;
+//     bottom: 2px solid #ccc;
+//     border-radius: 8px;
+
+//     &:hover {
+//         background: #f1f1f1;
+//     }
+
+//     &:hover &__title {
+//         color: blue;
+//     }
+
+//     &:hover &__title::before {
+//         color: orange;
+//     }
+
+//     // &: parent live = card
+
+//     &--bottom {
+//         margin-top: 100px;
+//     }
+//     &__thumb {
+//         width: 100%;
+//     }
+
+//     &__title {
+//         font-size: 22px;
+
+//         &__large {
+//             font-size: 32px;
+//         }
+
+//         &::before {
+//             content: "1";
+//         }
+
+//         // &:hover {
+//         //     color: green;
+//         // }
+
+//         strong {
+//             color: $primary-color;
+//         }
+//     }
+
+//     &__desc {
+//         // font-size: 18px;
+//         // font-weight: 600;
+//         // font-style: italic;
+//         font: {
+//             size: 18px;
+//             weight: 600;
+//             style: italic;
+//         }
+//     }
+
+//     &__btn-link {
+//         color: #666;
+//     }
+// }
+
+// vd4 : Extend, placeholder
+
+// Ex:
+// $primary-color: #3479f8;
+// $secondary-color: #6e757c;
+// $success-color: #4fa450;
+// $danger-color: #cc4648;
+// $warning-color: #f6c43d;
+// $info-color: #499fb6;
+
+// *,
+// ::before,
+// ::after {
+//     box-sizing: border-box;
+// }
+
+// .group {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 30px;
+//     padding: 50px;
+// }
+
+// // place holder selector : %name_selector => ko sinh ra code trong css neu khong dung
+// %btn-base {
+//     padding: 12px 20px;
+//     border: none;
+//     border-radius: 8px;
+
+//     color: #fff;
+//     background: $primary-color;
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+
+// .btn-primary {
+//     @extend .btn-base;
+//     background: $primary-color;
+// }
+
+// .btn-secondary {
+//     @extend .btn-base;
+//     background: $secondary-color;
+// }
+
+// .btn-success {
+//     @extend .btn-base;
+//     background: $success-color;
+// }
+
+// .btn-danger {
+//     @extend .btn-base;
+//     background: $danger-color;
+// }
+
+// .btn-warning {
+//     @extend .btn-base;
+//     color: #333;
+//     background: $warning-color;
+// }
+
+// .btn-info {
+//     @extend .btn-base;
+//     background: $info-color;
+// }
+
+// vd5 :  Cách sử dụng mixins trong Sass.
+
+// Mixins trong Sass là một cách tuyệt vời để tái sử dụng các đoạn mã CSS, giảm sự trùng
+// lặp và giúp cho việc bảo trì mã dễ dàng hơn. Mixins cho phép bạn
+// tạo ra các nhóm thuộc tính CSS mà sau đó có thể được bao gồm trong bất kỳ quy tắc nào.
+
+// Ex: mixin with paramater \ default para \
+// @mixin border-radius($radius,$width : 100px, $height : $width,..) {
+//     -webkit-border-radius: $radius;
+//     -moz-border-radius: $radius;
+//     -ms-border-radius: $radius;
+//     border-radius: $radius;
+// }
+
+// .button {
+//     @include border-radius(10px);
+//     background-color: blue;
+//     color: white;
+// }
+
+// Ex2 : default para $tr = $tl neu ko gan gia tri cho $tr
+// @mixin rounded($tl, $tr : $tl, $br : $tl, $bl : $tl) {
+//     border-radius: $tl $tr $br $bl;
+// }
+
+// .box {
+//     // @include rounded(20px, 50px, 20px, 40px);
+//     @include rounded(10px, $bl : 60px);
+//     // => tl = tr = br = 10px , bl = 60px
+// }
+
+//   Ex: no para
+// @mixin flexcenter {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .box {
+//     @include flexcenter;
+//     margin-top: 30px;
+//     background: green;
+// }
+
+// Ex3: mixin nested
+// @mixin rounded($tl, $tr : $tl, $br : $tl, $bl : $tl) {
+//     border-radius: $tl $tr $br $bl;
+//     @include move(100px);
+// }
+
+// Ex4 : para null
+// @mixin size($width , $height : null) {
+//     width: $width;
+//     height: $height;
+// }
+
+// .box {
+//     @include size(100px);
+//     // => height : null
+// }
+
+// Ex5: vd5: layout
+// @mixin grid($column, $spacing) {
+//     --column: #{$column};
+//     --spacing: #{$spacing};
+
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: var(--spacing);
+//     margin-left: calc(-1 * var(--spacing));
+
+//     // focus tat ca con truc tiep cua the cha
+//     > * {
+//         width: calc(100% / var(--column) - var(--spacing));
+//         margin-left: var(--spacing);
+//     }
+// }
+
+// .list {
+//     @include grid(4, 30px);
+//     //Tablet
+//     @media (max-width: 991.98px) {
+//             --column: 2;
+//             --spacing: 20px;
+//     }
+
+//     // Mobile
+//     @media (max-width: 575.98px) {
+//             --column: 1;
+//             --spacing: 10px;
+//     }
+
+//     .item {
+//         background: green;
+
+//         font: {
+//             size: 20px;
+//             weight: 600;
+//         }
+//     }
+// }
+
+// Ex: su dung mixin, media , content => responsive
+// @mixin grid($column, $spacing) {
+//     // bien noi suy 
+//     --column: #{$column};
+//     --spacing: #{$spacing};
+
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: var(--spacing);
+//     margin-left: calc(-1 * var(--spacing));
+
+//     // focus tat ca con truc tiep cua the cha
+//     > * {
+//         width: calc(100% / var(--column) - var(--spacing));
+//         margin-left: var(--spacing);
+//     }
+// }
+
+// // responsive use mixin and content 
+// @mixin screen($device) {
+//     @if $device == tablet {
+//         @media (max-width: 991.98px) {
+//             @content;
+//         }
+//     } @else if $device == mobile {
+//         @media (max-width: 575.98px) {
+//             @content;
+//         }
+//     } @else {
+//         @warn "Error";
+//     }
+// }
+
+// .list {
+//     @include grid(4, 30px);
+//     @include screen(tablet) {
+//         --column: 2;
+//         --spacing: 20px;
+//     }
+
+//     @include screen(mobile) {
+//         --column: 1;
+//         --spacing: 10px;
+//     }
+
+//     .item {
+//         background: green;
+
+//         font: {
+//             weight: 600;
+//             size: 20px;
+//         }
+//     }
+// }
+
+
+// Ex: vd 6
+// @mixin position($pos) {
+//     @if $pos == top-left {
+//         top: 0;
+//         left: 0;
+//     }
+
+//     @if $pos == top-right {
+//         top: 0;
+//         right: 0;
+//     }
+//     @if $pos == bottom-left {
+//         bottom: 0;
+//         left: 0;
+//     }
+//     @if $pos == bottom-right {
+//         bottom: 0;
+//         right: 0;
+//     }
+//     @if $pos == center {
+//         top: 50%;
+//         left: 50%;
+//         translate: -50% -50%;
+//     }
+// }
+
+// .container {
+//     position: relative;
+//     height: 400px;
+//     background: #ccc;
+
+//     .item {
+//         @include position(top-right);
+//         // top-left, top-right, bottom-right, bottom-left, center
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         width: 100px;
+//         height: 100px;
+//         background: green;
+//     }
+// }
+
+// * partial , import 
+// Ex: 
+// @import "base/variables";
+// @import "base/mixins";
+
+// @import "base/reset";
+// @import "base/common";
+
+// @import "components/header";
+// @import "components/navigation";
+// @import "components/sidebar";
+
+
+// * use, forward 
+// Base 
+// @use "base/variables";
+// @use "base/mixins";
+
+// @use "base/reset";
+// @use "base/common";
+
+// // components 
+@use "components/header";
+// @use "components/navigation";
+// @use "components/sidebar";
+
+// h1 {
+//     color: variables.$primary-color;
+//     @include mixins.flexCenter;
+// }
+
+// Ex2: 
+// default -> load file index (nap file index vao main )

@@ -1,0 +1,130 @@
+F8:
+ls : list folder 
+ls name-folder/ : list 
+clear : clear terminal
+ls -a: all file
+cd(change directory) : list folder 
+cd name_folder/  : di vao 
+cd .. : lui 1 cap
+cd - : back 
+
+mkdir(make director)_name-folder1/name_folder2 (folder 1 phai dc tao trc): tao folder
+rmdir(remove director)_name_folder/ 
+rmdir -r parent/ : xoa tat ca thu muc con parent
+mkdir -p parent/chil_1/chil_2  : tao thu muc con cho parent
+touch name_file: tao file
+rm name_file: xoa file
+	
+mkdir -p parent/child_1
+touch parent/chil_1/file.html : tao file trong folder
+
+vi demo.html : tao file trong vi
+ i enter -> open insert mod 
+ code
+ esc -> exit insert mod
+ w: -> luu file demo.html 
+ x: -> vua luu vua thoat	
+ q: -> quit vim 
+
+
+1/Các lệnh cơ bản về quản lý thư mục và tệp tin:
+ls: Liệt kê nội dung của thư mục.
+ls name-folder/: Liệt kê nội dung của thư mục cụ thể.
+clear: Xóa màn hình terminal.
+ls -a: Hiển thị tất cả các tệp (bao gồm tệp ẩn).
+cd name_folder/: Di chuyển vào thư mục cụ thể.
+cd ..: Quay lại một cấp thư mục.
+cd -: Quay lại thư mục trước đó.
+mkdir name-folder: Tạo thư mục mới.
+rmdir name_folder/: Xóa thư mục rỗng.
+rmdir -r parent/: Xóa thư mục và tất cả nội dung con của nó.
+mkdir -p parent/child_1/child_2: Tạo thư mục và các thư mục con.
+touch name_file: Tạo tệp tin mới.
+rm name_file: Xóa tệp tin.
+
+2/Các lệnh chỉnh sửa tệp tin với vi:
+vi demo.html: Mở hoặc tạo tệp demo.html trong trình soạn thảo vi.
+i: Chuyển sang chế độ chèn (insert mode).
+Esc: Thoát chế độ chèn.
+:w: Lưu tệp.
+:x: Lưu và thoát vi.
+:q: Thoát vi.
+Các phím tắt hữu ích trong terminal:
+Ctrl + C: Dừng ngay lập tức chương trình đang chạy trong terminal.
+Ctrl + D: Thoát khỏi phiên terminal hiện tại hoặc kết thúc đầu vào.
+Ctrl + Z: Tạm dừng chương trình hiện tại và đưa nó vào nền. Dùng fg để đưa chương trình quay trở lại.
+Các lệnh quản lý hệ thống và tệp tin:
+pwd: Hiển thị đường dẫn của thư mục hiện tại.
+cp source destination: Sao chép tệp tin hoặc thư mục.
+mv source destination: Di chuyển hoặc đổi tên tệp tin hoặc thư mục.
+file name_file: Kiểm tra loại tệp tin.
+zip archive_name files: Tạo tệp ZIP.
+unzip archive_name.zip: Giải nén tệp ZIP.
+tar -cvf archive_name.tar files: Tạo tệp TAR không nén.
+tar -xvf archive_name.tar: Giải nén tệp TAR.
+
+3/Các trình soạn thảo văn bản:
+nano name_file: Mở hoặc tạo tệp với trình soạn thảo nano.
+vi name_file: Mở hoặc tạo tệp với trình soạn thảo vi.
+jed name_file: Mở hoặc tạo tệp với trình soạn thảo jed.
+Các lệnh xem và tìm kiếm nội dung tệp tin:
+cat name_file: Hiển thị nội dung tệp tin.
+grep 'pattern' name_file: Tìm kiếm chuỗi trong tệp tin.
+sed 's/old/new/g' name_file: Thay thế chuỗi trong tệp tin.
+head -n 10 name_file: Hiển thị 10 dòng đầu tiên của tệp tin.
+tail -n 10 name_file: Hiển thị 10 dòng cuối cùng của tệp tin.
+awk '{print $1}' name_file: Tìm và xử lý mẫu trong tệp tin.
+sort name_file: Sắp xếp nội dung tệp tin.
+cut -d':' -f1 name_file: Tách và hiển thị các phần của dòng trong tệp tin.
+diff file1 file2: So sánh nội dung của hai tệp tin.
+tee name_file: In đầu ra của lệnh ra màn hình và ghi vào tệp.
+
+4/Các lệnh quản lý mạng:
+ping hostname: Kiểm tra kết nối mạng.
+wget URL: Tải tệp từ URL.
+curl URL: Truyền dữ liệu giữa các máy chủ.
+scp source destination: Sao chép tệp an toàn giữa các hệ thống.
+rsync -avz source destination: Đồng bộ hóa nội dung giữa các thư mục hoặc máy tính.
+ifconfig: Hiển thị cấu hình mạng của hệ thống.
+netstat -tulnp: Hiển thị thông tin mạng như routing và sockets.
+traceroute hostname: Theo dõi các bước nhảy của gói tin đến đích.
+nslookup domain: Tra cứu địa chỉ IP của một domain.
+dig domain: Hiển thị thông tin DNS, bao gồm loại bản ghi.
+
+5/Các lệnh tiện ích khác:
+history: Liệt kê các lệnh đã chạy trước đó.
+man command: Hiển thị hướng dẫn sử dụng của lệnh.
+echo "message": In một thông điệp ra màn hình.
+ln -s target link_name: Tạo liên kết tệp hoặc thư mục.
+alias ll='ls -la': Tạo bí danh cho lệnh.
+cal: Hiển thị lịch trên terminal.
+apt-get update: Cập nhật danh sách các gói phần mềm trên hệ thống Debian-based.
+
+6/Các lệnh quản lý tài nguyên hệ thống:
+df -h: Hiển thị dung lượng đĩa đã sử dụng.
+du -sh name_folder: Kiểm tra dung lượng thư mục đã sử dụng.
+top: Hiển thị các tiến trình đang chạy và tài nguyên hệ thống.
+htop: Tương tự top nhưng có giao diện người dùng tương tác.
+ps aux: Tạo ảnh chụp của tất cả các tiến trình đang chạy.
+uname -a: Hiển thị thông tin về kernel và hệ thống.
+hostname: Hiển thị hostname của hệ thống.
+time command: Đo thời gian thực thi của lệnh.
+systemctl: Quản lý các dịch vụ hệ thống.
+watch -n 2 command: Chạy lệnh liên tục mỗi 2 giây.
+
+7/Các lệnh quản lý hệ thống và người dùng:
+locate name_file: Tìm tệp tin trong cơ sở dữ liệu hệ thống.
+find /path -name name_file: Tìm tệp tin trong hệ thống.
+sudo command: Chạy lệnh với quyền superuser.
+su - username: Chạy lệnh trong shell với người dùng khác.
+chmod 755 name_file: Thay đổi quyền truy cập của tệp tin.
+chown user:group name_file: Thay đổi chủ sở hữu của tệp tin.
+useradd username: Tạo tài khoản người dùng mới.
+userdel username: Xóa tài khoản người dùng.
+
+8/ Create picture
+cd /mnt/g/picture(di chuyen den thuc muc lay anh)
+jp2a --chars=" l" --width=120 Dili3.jpg(trang den)
+img2txt Dili.jpg(asski)
+9/ tao chu
+figlet C -> tao chu C
